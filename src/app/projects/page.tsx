@@ -31,9 +31,11 @@ export default function ProjectsPage() {
         imageAlt="Interior of the Villa at Golf Course Extension Road, Gurugram"
         imageWidth={344}
         imageHeight={344}
-        portraitSrc="/assets/hero-crops/villa-golf-course-extension.webp"
-        portraitWidth={258}
-        portraitHeight={344}
+        film={{
+          poster: "/assets/videos/bg-poster-luxury-apartment.webp",
+          desktopSrc: "/assets/videos/bg-luxury-apartment-desktop.mp4",
+          mobileSrc: "/assets/videos/bg-luxury-apartment-mobile.mp4",
+        }}
         stat={{ value: "13", label: "Commissioned projects" }}
       />
 

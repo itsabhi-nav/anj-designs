@@ -28,6 +28,11 @@ export default function ContactPage() {
         imageAlt="An interior by ANJ Designs by Decor Inn"
         imageWidth={960}
         imageHeight={1280}
+        film={{
+          poster: "/assets/videos/bg-poster-home-office.webp",
+          desktopSrc: "/assets/videos/bg-home-office-desktop.mp4",
+          mobileSrc: "/assets/videos/bg-home-office-mobile.mp4",
+        }}
         stat={{ value: "48h", label: "Typical response time" }}      />
 
       {/* Details + form */}

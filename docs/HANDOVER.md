@@ -131,6 +131,7 @@ footer.
 | Horizontal project rail | Home | Native horizontal scroll with scroll-snap and arrow buttons — no scroll hijacking, no pinning, works with touch and keyboard |
 | Reading progress | Global | `requestAnimationFrame`, paused when the tab is hidden |
 | **Live studio clock** | Footer | The time in New Delhi, updating every second |
+| **Background film** | Home, About, Services, Projects, Contact | The studio's own hero footage, cut to one calm segment and played at 45% speed behind the hero. The poster frame is the LCP; the film is only requested once the browser is idle, and never at all under reduced motion or on a metered connection |
 
 **Reduced motion:** every animation is disabled under
 `prefers-reduced-motion: reduce`, the GSAP effects never initialise, the
@@ -176,12 +177,12 @@ Every page at **320, 375, 430, 768, 1024, 1280, 1440 and 1920 px**:
 
 | Page | Perf | A11y | Best practices | SEO | FCP | TBT | CLS |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Home | **91** | **100** | **100** | **100** | 1.1 s | 50 ms | 0 |
-| About | **93** | **100** | **100** | **100** | 1.1 s | 40 ms | 0 |
-| Services | **92** | **100** | **100** | **100** | 1.1 s | 20 ms | 0 |
-| Projects | **91** | **100** | **100** | **100** | 1.1 s | 20 ms | 0 |
-| Project detail | **92** | **100** | **100** | **100** | 0.9 s | 10 ms | 0 |
-| Contact | **90** | **100** | **100** | **100** | 1.2 s | 10 ms | 0 |
+| Home | **90** | **100** | **100** | **100** | 1.1 s | 30 ms | 0 |
+| About | **92** | **100** | **100** | **100** | 1.1 s | 60 ms | 0 |
+| Services | **89** | **100** | **100** | **100** | 1.1 s | 50 ms | 0 |
+| Projects | **91** | **100** | **100** | **100** | 1.1 s | 40 ms | 0 |
+| Project detail | **95** | **100** | **100** | **100** | 0.9 s | 30 ms | 0 |
+| Contact | **93** | **100** | **100** | **100** | 1.2 s | 40 ms | 0 |
 
 > **Note on the LCP figure.** Lighthouse's Lantern simulator reports a
 > simulated LCP of 3.2 – 3.5 s. Reading the Chrome DevTools Protocol trace
@@ -196,11 +197,11 @@ Every page at **320, 375, 430, 768, 1024, 1280, 1440 and 1920 px**:
 | Metric | Target | Measured |
 | --- | --- | --- |
 | First Contentful Paint | < 1.8 s | 0.8 – 1.0 s |
-| Largest Contentful Paint | < 2.5 s | 0.8 – 2.4 s (1.07 s on the home page) |
+| Largest Contentful Paint | < 2.5 s | 0.9 – 2.4 s (1.4 s on the home page) |
 | Total Blocking Time | < 200 ms | 10 – 50 ms |
 | Cumulative Layout Shift | < 0.1 | 0.000 – 0.023 |
 | Initial JS (shared) | — | 103 kB |
-| Page transfer | — | 350 – 545 kB including all media |
+| Page transfer | — | 450 – 660 kB including all media |
 
 The hero photograph is the largest request at 70 kB on mobile, well inside the
 200 – 350 kB target from the brief. Nothing below the fold is requested before

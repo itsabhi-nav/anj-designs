@@ -33,12 +33,12 @@ export default function SiteFooter() {
               aria-label="ANJ Designs by Decor Inn — home"
             >
               <Image
-                src="/assets/brand/anj-logo-white.png"
+                src="/assets/brand/anj-lockup-white.webp"
                 alt="ANJ Designs by Decor Inn"
-                width={686}
-                height={147}
-                sizes="184px"
-                className="h-auto w-full"
+                width={732}
+                height={172}
+                unoptimized
+                className="block h-auto w-full"
               />
             </Link>
             <p className="mt-7 max-w-sm text-sm leading-relaxed text-ivory/60">

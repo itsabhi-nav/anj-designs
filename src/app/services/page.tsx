@@ -30,9 +30,11 @@ export default function ServicesPage() {
         imageAlt="A dining interior designed by ANJ Designs by Decor Inn"
         imageWidth={1600}
         imageHeight={1177}
-        portraitSrc="/assets/hero-crops/dining.webp"
-        portraitWidth={883}
-        portraitHeight={1177}
+        film={{
+          poster: "/assets/videos/bg-poster-modern-furniture.webp",
+          desktopSrc: "/assets/videos/bg-modern-furniture-desktop.mp4",
+          mobileSrc: "/assets/videos/bg-modern-furniture-mobile.mp4",
+        }}
         stat={{ value: "50+", label: "Polishes and finishes" }}
       />
 

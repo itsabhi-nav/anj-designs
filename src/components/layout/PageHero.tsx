@@ -1,4 +1,5 @@
 import Media from "@/components/ui/Media";
+import BackgroundVideo from "@/components/ui/BackgroundVideo";
 
 /**
  * Inner-page hero.
@@ -15,9 +16,7 @@ export default function PageHero({
   imageAlt,
   imageWidth,
   imageHeight,
-  portraitSrc,
-  portraitWidth,
-  portraitHeight,
+  film,
   stat,
 }: {
   eyebrow: string;
@@ -27,9 +26,12 @@ export default function PageHero({
   imageAlt: string;
   imageWidth: number;
   imageHeight: number;
-  portraitSrc?: string;
-  portraitWidth?: number;
-  portraitHeight?: number;
+  /** The background film for this page, if it has one. */
+  film?: {
+    poster: string;
+    desktopSrc: string;
+    mobileSrc: string;
+  };
   stat?: { value: string; label: string };
 }) {
   return (
@@ -37,22 +39,31 @@ export default function PageHero({
       className="relative isolate flex min-h-[78svh] items-end overflow-hidden bg-forest"
       aria-labelledby="page-title"
     >
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="hero-scale absolute inset-0">
-          <Media
-            src={image}
-            alt={imageAlt}
-            width={imageWidth}
-            height={imageHeight}
+      {film ? (
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          <BackgroundVideo
+            poster={film.poster}
+            posterAlt={imageAlt}
+            desktopSrc={film.desktopSrc}
+            mobileSrc={film.mobileSrc}
             sizes="100vw"
-            priority
-            portraitSrc={portraitSrc}
-            portraitWidth={portraitWidth}
-            portraitHeight={portraitHeight}
-            className="h-full w-full object-cover object-center"
           />
         </div>
-      </div>
+      ) : (
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          <div className="hero-scale absolute inset-0">
+            <Media
+              src={image}
+              alt={imageAlt}
+              width={imageWidth}
+              height={imageHeight}
+              sizes="100vw"
+              priority
+              className="h-full w-full object-cover object-center"
+            />
+          </div>
+        </div>
+      )}
 
       <div
         aria-hidden="true"

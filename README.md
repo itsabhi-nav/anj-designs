@@ -35,6 +35,12 @@ Three typefaces, three jobs:
 | Manrope | Body — running copy, navigation, buttons |
 | JetBrains Mono | Technical metadata — sheet numbers, coordinates, counters |
 
+**A background film** plays behind every hero, cut from the studio's own
+footage: one calm segment, played at 45% speed, 960 px, under 200 kB. The
+poster frame is the Largest Contentful Paint; the film is only requested once
+the browser is idle, and never at all under reduced motion or on a metered
+connection.
+
 Full detail in `docs/HANDOVER.md` §2.
 
 ---

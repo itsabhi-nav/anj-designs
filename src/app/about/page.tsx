@@ -73,9 +73,11 @@ export default function AboutPage() {
         imageAlt="A grand residential entrance interior designed by ANJ Designs by Decor Inn"
         imageWidth={1272}
         imageHeight={936}
-        portraitSrc="/assets/hero-crops/entrance-foyer.webp"
-        portraitWidth={702}
-        portraitHeight={936}
+        film={{
+          poster: "/assets/videos/bg-poster-home-office.webp",
+          desktopSrc: "/assets/videos/bg-home-office-desktop.mp4",
+          mobileSrc: "/assets/videos/bg-home-office-mobile.mp4",
+        }}
         stat={{ value: "22,500", label: "Sq ft production unit, Panchkula" }}
       />
 

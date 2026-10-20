@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
 import { site } from "@/data/site";
-import Media from "@/components/ui/Media";
+import BackgroundVideo from "@/components/ui/BackgroundVideo";
 import Magnetic from "@/components/motion/Magnetic";
 
 /**
@@ -23,22 +23,15 @@ export default function Hero() {
       className="relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden bg-forest"
       aria-labelledby="hero-title"
     >
-      {/* Photograph */}
+      {/* Background film — the poster is the LCP; the film arrives after idle. */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="hero-scale absolute inset-0">
-          <Media
-            src="/assets/craft/informal-living/informal-living-decorinn-01.webp"
-            alt="A completed living room interior designed and executed by ANJ Designs by Decor Inn"
-            width={1600}
-            height={1176}
-            sizes="100vw"
-            priority
-            portraitSrc="/assets/hero-crops/home-living.webp"
-            portraitWidth={882}
-            portraitHeight={1176}
-            className="h-full w-full object-cover object-center"
-          />
-        </div>
+        <BackgroundVideo
+          poster="/assets/videos/bg-poster-luxury-apartment.webp"
+          posterAlt="A luxury apartment interior at dusk with a full-height city view"
+          desktopSrc="/assets/videos/bg-luxury-apartment-desktop.mp4"
+          mobileSrc="/assets/videos/bg-luxury-apartment-mobile.mp4"
+          sizes="100vw"
+        />
       </div>
 
       {/* Forest-green treatment */}

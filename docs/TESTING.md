@@ -68,12 +68,12 @@ Production build, mobile emulation (Moto G Power, Slow 4G, 4× CPU throttle).
 
 | Page | Perf | A11y | Best practices | SEO | FCP | TBT | CLS | Transfer |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Home | **91** | **100** | **100** | **100** | 1.1 s | 50 ms | 0 | 690 kB |
-| About | **93** | **100** | **100** | **100** | 1.1 s | 40 ms | 0 | 599 kB |
-| Services | **92** | **100** | **100** | **100** | 1.1 s | 20 ms | 0 | 613 kB |
-| Projects | **91** | **100** | **100** | **100** | 1.1 s | 20 ms | 0 | 510 kB |
-| Project detail | **92** | **100** | **100** | **100** | 0.9 s | 10 ms | 0 | 551 kB |
-| Contact | **90** | **100** | **100** | **100** | 1.2 s | 10 ms | 0 | 479 kB |
+| Home | **90** | **100** | **100** | **100** | 1.1 s | 30 ms | 0 | 802 kB |
+| About | **92** | **100** | **100** | **100** | 1.1 s | 60 ms | 0 | 611 kB |
+| Services | **89** | **100** | **100** | **100** | 1.1 s | 50 ms | 0 | 694 kB |
+| Projects | **91** | **100** | **100** | **100** | 1.1 s | 40 ms | 0 | 701 kB |
+| Project detail | **95** | **100** | **100** | **100** | 0.9 s | 30 ms | 0 | 594 kB |
+| Contact | **93** | **100** | **100** | **100** | 1.2 s | 40 ms | 0 | 539 kB |
 
 Accessibility, Best Practices and SEO are **100 on every page**.
 
@@ -98,12 +98,12 @@ throttle**, mobile viewport 412 × 823 at DPR 1.75.
 
 | Page | TTFB | FCP | LCP | CLS | Transfer | Requests |
 | --- | --- | --- | --- | --- | --- | --- |
-| Home | 14 ms | 920 ms | **1072 ms** | 0 | 544 kB | 30 |
-| About | 8 ms | 892 ms | 2432 ms | 0.0001 | 439 kB | 22 |
-| Services | 6 ms | 792 ms | 2164 ms | 0.012 | 473 kB | 25 |
-| Projects | 11 ms | 800 ms | 844 ms | 0.003 | 396 kB | 27 |
-| Project detail | 5 ms | 792 ms | 864 ms | 0.023 | 421 kB | 27 |
-| Contact | 4 ms | 820 ms | 1728 ms | 0.002 | 410 kB | 23 |
+| Home | 24 ms | 1008 ms | 1420 ms | 0 | 657 kB | 31 |
+| About | 8 ms | 892 ms | 1432 ms | 0 | 452 kB | 23 |
+| Services | 9 ms | 792 ms | 2364 ms | 0.012 | 554 kB | 26 |
+| Projects | 6 ms | 792 ms | 2060 ms | 0.003 | 567 kB | 28 |
+| Project detail | 8 ms | 772 ms | 860 ms | 0.023 | 464 kB | 27 |
+| Contact | 7 ms | 1120 ms | 1248 ms | 0 | 470 kB | 24 |
 
 Every metric is inside the brief's budget except the two pages at 2.2 – 2.4 s,
 which are marginally over the 2.5 s LCP target only because the whole page is
@@ -278,3 +278,25 @@ npm run qa:vitals                           # throttled Core Web Vitals
 npm run qa:lcptrace                         # observed LCP from the Chrome trace
 node scripts/find-overflow.mjs "/@320"      # list overflowing elements
 ```
+
+---
+
+## 11. The background film
+
+The hero film is the only media element on the site that is not an image, so
+it is tested separately.
+
+| Check | Result |
+| --- | --- |
+| Video requests at the `load` event | **0** — the poster has already painted |
+| First video request | 163 ms **after** load, once the browser is idle |
+| Desktop variant | `bg-luxury-apartment-desktop.mp4`, 960 px, 194 kB, plays (readyState 4) |
+| Mobile variant | `bg-luxury-apartment-mobile.mp4`, 560 px, 79 kB, plays |
+| `prefers-reduced-motion: reduce` | **0 requests**, the video stays at opacity 0 and the poster carries the page |
+| `navigator.connection.saveData` | **0 requests** |
+| Audio | None — the encodes are stripped with `-an` |
+| LCP element | Still the poster image (observed LCP 6 – 97 ms after first paint) |
+| CLS | 0 — the poster never leaves the DOM, so no LCP candidate is ever invalidated |
+
+The film is served from the same origin and is covered by the immutable cache
+header, so it is downloaded once per visitor for the whole site.

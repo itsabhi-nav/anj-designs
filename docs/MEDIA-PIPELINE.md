@@ -112,22 +112,63 @@ Cloudinary is **not** required. The default path needs no third-party account.
 
 ## 4. Video
 
-The three original videos are 5.6 MB, 18.5 MB and 4.1 MB as published. They
-are never loaded on the first screen.
+The three original videos are 5.6 MB, 18.5 MB and 4.1 MB as published. Two
+delivery paths are built from them.
 
-`scripts/optimise-videos.py` produces, for each video:
+### 4.1 The background films — the hero
 
-| Output | Purpose |
+The original site plays a background film behind the hero on every page, and
+that is what the new site does too. The films are the studio's own footage, cut
+down for the web:
+
+| Output | Purpose | Size |
+| --- | --- | --- |
+| `bg-<name>-desktop.mp4` | 960 px, 22 fps, CRF 38, no audio | 71 – 194 kB |
+| `bg-<name>-mobile.mp4` | 560 px, same settings | 30 – 79 kB |
+| `bg-poster-<name>.webp` | A still from the middle of the film — the LCP | 34 – 70 kB |
+| `<name>-desktop.mp4` | 1280 px, CRF 30 — for the opt-in film in the craftsmanship section | 0.4 – 1.1 MB |
+| `originals/<name>.mp4` | The untouched master | 5.6 – 18.5 MB |
+
+Each background film is one calm segment of the original — for the apartment
+film, the slow dusk pan across the city view — played at 45% speed so the
+camera drifts rather than walks. It is blurred very slightly and encoded hard,
+because it sits under a dark green treatment where fine detail is invisible. A
+large file there would be paid for and never seen.
+
+| Page | Film |
 | --- | --- |
-| `<name>-desktop.mp4` | 1280 px wide, H.264, CRF 30, `+faststart` |
-| `<name>-mobile.mp4` | 640 px wide, same settings |
-| `poster-<name>.webp` | Poster frame, shown immediately |
-| `originals/<name>.mp4` | The untouched master, kept for reference |
+| Home | `luxury-apartment` — the original site's own hero film |
+| About | `home-office` — the studio |
+| Services | `modern-furniture` — the craft |
+| Projects | `luxury-apartment` |
+| Contact | `home-office` |
+| Project detail | *no film* — the hero shows that project's own photograph |
 
-`src/components/ui/DeferredVideo.tsx` renders the poster as a plain image and
-only attaches the `<source>` elements once the video scrolls within 300 px of
-the viewport. Playback never starts automatically, never has audio, and the
-play control is disabled entirely under `prefers-reduced-motion`.
+### 4.2 How the background film is loaded
+
+`src/components/ui/BackgroundVideo.tsx` enforces five rules:
+
+1. **The poster is the Largest Contentful Paint.** It is a priority image and
+   it paints first, before a single video byte is requested.
+2. **The film is only requested after the page has loaded and the browser is
+   idle** (`requestIdleCallback`, with a 3.5 s ceiling). It never competes
+   with the first screen.
+3. **It is never loaded at all** for a visitor who prefers reduced motion, or
+   who is on a metered (`Save-Data`) or 2G connection. The poster simply
+   stays.
+4. **It has no audio track at all**, so it can never make a sound.
+5. **The poster is never removed from the DOM**, so the LCP element never
+   changes and no new LCP candidate is ever created.
+
+Measured: 0 video requests at the `load` event; the first request lands
+163 ms *after* load, once the browser is idle. Under `prefers-reduced-motion`
+and under `Save-Data`, 0 requests are made at all.
+
+### 4.3 The opt-in film
+
+The craftsmanship film is a different pattern: it never autoplays, it is only
+mounted when its section comes within 300 px of the viewport, and it has a
+play button.
 
 ---
 
@@ -146,18 +187,44 @@ are served with the same policy. The contact endpoint is never cached.
 
 ## 6. Fonts
 
-`next/font` self-hosts Cormorant Garamond and Manrope as WOFF2 subsets with
-`font-display: swap`. Only the weights actually used are requested:
+`next/font` self-hosts Cormorant Garamond, Manrope and JetBrains Mono as WOFF2
+subsets with `font-display: swap`. Only the weights actually used are
+requested:
 
 - Cormorant Garamond — 300 / 400 / 500, normal + italic
 - Manrope — 400 / 500 / 600 / 700
+- JetBrains Mono — 300 / 400 / 500
+
+The mono is preloaded because it appears in the first viewport: loading it
+late would swap the metrics of the metadata labels and shift the layout.
 
 No external font request is made, so there is no third-party connection to
 preconnect to and no layout shift from a late font.
 
 ---
 
-## 7. Budgets
+## 7. The brand mark
+
+The library contains several logo files, and **two of them are damaged**:
+`Header_ANJ_Final_2__1_-removebg-preview.png` and the trimmed derivative made
+from it both have the lower third of the "ANJ DESIGNS" wordmark sliced away.
+
+`anj-logo.webp` (732 × 172) is the **complete** lockup — sofa and lamp mark,
+"ANJ DESIGNS", and the "INTERIORS, FURNITURE, DECOR" tagline, all intact. It
+is the source for the two header marks:
+
+| File | Use |
+| --- | --- |
+| `anj-lockup-white.webp` | The header and footer on dark surfaces |
+| `anj-lockup-forest.webp` | The header once it turns solid |
+
+Both are served as **one exact file** with `unoptimized`, not as a responsive
+srcset: a brand mark should be pixel-identical everywhere, and a srcset for a
+fixed-size asset only risks describing a file with the wrong width.
+
+---
+
+## 8. Budgets
 
 | Budget | Target | Measured (mobile, Slow 4G + 4× CPU) |
 | --- | --- | --- |

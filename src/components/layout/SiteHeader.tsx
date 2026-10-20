@@ -50,9 +50,11 @@ export default function SiteHeader() {
       <header
         ref={headerRef}
         className={cn(
-          "fixed inset-x-0 top-0 z-50 transition-[background-color,backdrop-filter,border-color,padding] duration-700 ease-editorial",
+          "fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,padding] duration-700 ease-editorial",
           solid
-            ? "border-b border-forest/10 bg-ivory-soft/92 py-3 backdrop-blur-xl supports-[backdrop-filter]:bg-ivory-soft/80"
+            ? // Fully opaque: at 80% the hero's bright content still read
+              // through the bar and looked like a rendering fault.
+              "border-b border-forest/10 bg-ivory-soft py-3 shadow-[0_1px_0_rgba(16,40,32,.06),0_10px_30px_-24px_rgba(16,40,32,.5)]"
             : "border-b border-transparent bg-transparent py-5"
         )}
       >
@@ -65,28 +67,33 @@ export default function SiteHeader() {
               solid ? "opacity-100" : "opacity-100"
             )}
           >
+            {/*
+              The brand mark is a fixed-size asset, so it is served as one
+              exact file rather than a responsive srcset — a logo should be
+              pixel-identical everywhere, and the old trimmed PNG in the
+              library was itself cropped, which cut the wordmark in half.
+            */}
             <span className="relative block w-[10.5rem] sm:w-[12rem]">
               <Image
-                src="/assets/brand/anj-logo-white.png"
+                src="/assets/brand/anj-lockup-white.webp"
                 alt="ANJ Designs by Decor Inn"
-                width={686}
-                height={147}
-                sizes="(max-width: 640px) 168px, 192px"
-                priority
+                width={732}
+                height={172}
+                unoptimized
                 className={cn(
-                  "h-auto w-full transition-all duration-700 ease-editorial",
+                  "block h-auto w-full transition-opacity duration-700 ease-editorial",
                   solid ? "opacity-0" : "opacity-100"
                 )}
               />
               <Image
-                src="/assets/brand/anj-logo-forest.png"
-                alt="ANJ Designs by Decor Inn"
-                width={686}
-                height={147}
-                sizes="(max-width: 640px) 168px, 192px"
-                priority
+                src="/assets/brand/anj-lockup-forest.webp"
+                alt=""
+                aria-hidden="true"
+                width={732}
+                height={172}
+                unoptimized
                 className={cn(
-                  "absolute inset-0 h-auto w-full transition-all duration-700 ease-editorial",
+                  "absolute inset-0 block h-auto w-full transition-opacity duration-700 ease-editorial",
                   solid ? "opacity-100" : "opacity-0"
                 )}
               />
