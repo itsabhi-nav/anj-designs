@@ -1,0 +1,780 @@
+{
+  "origin": "https://anjdesigns.in/wp-content/uploads",
+  "fetchedAt": "2026-10-19T21:59:42.590Z",
+  "assets": [
+    {
+      "remote": "2024/07/Anj_Logo___-copy-2.webp",
+      "local": "brand/anj-logo.webp",
+      "status": "ok",
+      "bytes": 43452
+    },
+    {
+      "remote": "2024/07/ANJ-Designs-by-Decorinn-Logo.png",
+      "local": "brand/anj-designs-by-decorinn-logo.png",
+      "status": "ok",
+      "bytes": 96142
+    },
+    {
+      "remote": "2024/07/Header_ANJ_Final_2-1.jpg",
+      "local": "brand/anj-header-master.jpg",
+      "status": "ok",
+      "bytes": 36721
+    },
+    {
+      "remote": "2024/07/Header_ANJ_Final_2-e1747462188672.webp",
+      "local": "brand/anj-header-alt.webp",
+      "status": "ok",
+      "bytes": 17904
+    },
+    {
+      "remote": "2024/07/Header_ANJ_Final_2__1_-removebg-preview.png",
+      "local": "brand/anj-header-removebg.png",
+      "status": "ok",
+      "bytes": 73452
+    },
+    {
+      "remote": "2024/08/ANJ-Favicon.png",
+      "local": "brand/anj-favicon.png",
+      "status": "ok",
+      "bytes": 53015
+    },
+    {
+      "remote": "2024/08/cropped-ANJ-Favicon.png",
+      "local": "brand/anj-favicon-cropped.png",
+      "status": "ok",
+      "bytes": 54827
+    },
+    {
+      "remote": "2024/08/BG-COLOR.webp",
+      "local": "brand/bg-color.webp",
+      "status": "ok",
+      "bytes": 2288
+    },
+    {
+      "remote": "2024/07/BG-2.png",
+      "local": "brand/bg-2.png",
+      "status": "ok",
+      "bytes": 89975
+    },
+    {
+      "remote": "2025/07/anjwebsitebg-scaled.webp",
+      "local": "home/anj-website-bg.webp",
+      "status": "ok",
+      "bytes": 5760
+    },
+    {
+      "remote": "2025/07/bg_home.webp",
+      "local": "home/bg-home.webp",
+      "status": "ok",
+      "bytes": 55158
+    },
+    {
+      "remote": "2025/07/home_bg.webp",
+      "local": "home/home-bg.webp",
+      "status": "ok",
+      "bytes": 91798
+    },
+    {
+      "remote": "2025/07/bgtexanj.webp",
+      "local": "home/bg-texture.webp",
+      "status": "ok",
+      "bytes": 83976
+    },
+    {
+      "remote": "2025/07/aboutus_bg.webp",
+      "local": "home/aboutus-bg.webp",
+      "status": "ok",
+      "bytes": 100038
+    },
+    {
+      "remote": "2025/07/aboutus_anj.webp",
+      "local": "home/aboutus-anj.webp",
+      "status": "ok",
+      "bytes": 102520
+    },
+    {
+      "remote": "2025/07/Rectangle-2232.webp",
+      "local": "home/rectangle-2232.webp",
+      "status": "ok",
+      "bytes": 44844
+    },
+    {
+      "remote": "2025/07/ANJDESIGNS.webp",
+      "local": "home/anjdesigns-wordmark.webp",
+      "status": "ok",
+      "bytes": 194396
+    },
+    {
+      "remote": "2025/07/ANJfounder.webp",
+      "local": "founder/annie-nagpal-jain.webp",
+      "status": "ok",
+      "bytes": 103098
+    },
+    {
+      "remote": "2025/07/whychoose1.webp",
+      "local": "home/why-choose-1.webp",
+      "status": "ok",
+      "bytes": 106814
+    },
+    {
+      "remote": "2025/07/whychoose2.webp",
+      "local": "home/why-choose-2.webp",
+      "status": "ok",
+      "bytes": 201404
+    },
+    {
+      "remote": "2025/07/whychoose3.webp",
+      "local": "home/why-choose-3.webp",
+      "status": "ok",
+      "bytes": 159280
+    },
+    {
+      "remote": "2025/07/whychoose4.webp",
+      "local": "home/why-choose-4.webp",
+      "status": "ok",
+      "bytes": 194400
+    },
+    {
+      "remote": "2025/07/anjproject.webp",
+      "local": "home/anjproject.webp",
+      "status": "ok",
+      "bytes": 40306
+    },
+    {
+      "remote": "2025/07/anjprojectphoto.webp",
+      "local": "home/anjproject-photo.webp",
+      "status": "ok",
+      "bytes": 296614
+    },
+    {
+      "remote": "2025/07/anjprojectdisplay.webp",
+      "local": "home/anjproject-display.webp",
+      "status": "ok",
+      "bytes": 17226
+    },
+    {
+      "remote": "2025/07/anjprojectdisplay1.webp",
+      "local": "home/anjproject-display-wide.webp",
+      "status": "ok",
+      "bytes": 25738
+    },
+    {
+      "remote": "2025/07/anjdesigns5.webp",
+      "local": "home/anjdesigns-5.webp",
+      "status": "ok",
+      "bytes": 30010
+    },
+    {
+      "remote": "2025/07/anjdesigns6.webp",
+      "local": "home/anjdesigns-6.webp",
+      "status": "ok",
+      "bytes": 41628
+    },
+    {
+      "remote": "2025/07/anjdesigns7.webp",
+      "local": "home/anjdesigns-7.webp",
+      "status": "ok",
+      "bytes": 42840
+    },
+    {
+      "remote": "2025/07/anjservices1.webp",
+      "local": "services/anjservices-1.webp",
+      "status": "ok",
+      "bytes": 42616
+    },
+    {
+      "remote": "2025/07/anjservices2.webp",
+      "local": "services/anjservices-2.webp",
+      "status": "ok",
+      "bytes": 41772
+    },
+    {
+      "remote": "2025/07/anjservices3.webp",
+      "local": "services/anjservices-3.webp",
+      "status": "ok",
+      "bytes": 39478
+    },
+    {
+      "remote": "2025/09/1.png",
+      "local": "about/about-1.png",
+      "status": "ok",
+      "bytes": 294671
+    },
+    {
+      "remote": "2025/09/2.png",
+      "local": "about/about-2.png",
+      "status": "ok",
+      "bytes": 279050
+    },
+    {
+      "remote": "2025/09/Group-47814.png",
+      "local": "about/group-47814.png",
+      "status": "ok",
+      "bytes": 1551792
+    },
+    {
+      "remote": "2025/09/Frame-36929.png",
+      "local": "about/frame-36929.png",
+      "status": "ok",
+      "bytes": 20715
+    },
+    {
+      "remote": "2025/07/serviceanjdesigns.webp",
+      "local": "services/service-anj-designs.webp",
+      "status": "ok",
+      "bytes": 153060
+    },
+    {
+      "remote": "2025/07/servicebganj.webp",
+      "local": "services/service-bg.webp",
+      "status": "ok",
+      "bytes": 107172
+    },
+    {
+      "remote": "2025/07/anjbcaboutus.webp",
+      "local": "services/anj-bc-aboutus.webp",
+      "status": "ok",
+      "bytes": 260834
+    },
+    {
+      "remote": "2025/07/anjtestimonials.webp",
+      "local": "services/anj-testimonials.webp",
+      "status": "ok",
+      "bytes": 72750
+    },
+    {
+      "remote": "2025/07/anjservice1.webp",
+      "local": "services/anjservice-1.webp",
+      "status": "ok",
+      "bytes": 47866
+    },
+    {
+      "remote": "2025/07/anjservice2.webp",
+      "local": "services/anjservice-2.webp",
+      "status": "ok",
+      "bytes": 53980
+    },
+    {
+      "remote": "2025/07/anjservice3.webp",
+      "local": "services/anjservice-3.webp",
+      "status": "ok",
+      "bytes": 61682
+    },
+    {
+      "remote": "2025/07/anjservice4.webp",
+      "local": "services/anjservice-4.webp",
+      "status": "ok",
+      "bytes": 29912
+    },
+    {
+      "remote": "2025/07/anjservice5.webp",
+      "local": "services/anjservice-5.webp",
+      "status": "ok",
+      "bytes": 42728
+    },
+    {
+      "remote": "2025/07/anjservice6.webp",
+      "local": "services/anjservice-6.webp",
+      "status": "ok",
+      "bytes": 67030
+    },
+    {
+      "remote": "2025/07/anjservice7.webp",
+      "local": "services/anjservice-7.webp",
+      "status": "ok",
+      "bytes": 44620
+    },
+    {
+      "remote": "2025/07/anjservice8.webp",
+      "local": "services/anjservice-8.webp",
+      "status": "ok",
+      "bytes": 40972
+    },
+    {
+      "remote": "2025/07/anjservice9.webp",
+      "local": "services/anjservice-9.webp",
+      "status": "ok",
+      "bytes": 54282
+    },
+    {
+      "remote": "2025/07/anjservice10.webp",
+      "local": "services/anjservice-10.webp",
+      "status": "ok",
+      "bytes": 166608
+    },
+    {
+      "remote": "2025/07/anjinterior1.webp",
+      "local": "services/anjinterior-1.webp",
+      "status": "ok",
+      "bytes": 53846
+    },
+    {
+      "remote": "2025/07/anjinterior2.webp",
+      "local": "services/anjinterior-2.webp",
+      "status": "ok",
+      "bytes": 51520
+    },
+    {
+      "remote": "2025/07/anjinterior3.webp",
+      "local": "services/anjinterior-3.webp",
+      "status": "ok",
+      "bytes": 51730
+    },
+    {
+      "remote": "2025/07/anjinterior4.webp",
+      "local": "services/anjinterior-4.webp",
+      "status": "ok",
+      "bytes": 39432
+    },
+    {
+      "remote": "2025/07/anjdesigs12.webp",
+      "local": "services/anjdesigns-12-alt.webp",
+      "status": "ok",
+      "bytes": 41916
+    },
+    {
+      "remote": "2025/07/anjdesigns12.webp",
+      "local": "services/anjdesigns-12.webp",
+      "status": "ok",
+      "bytes": 61698
+    },
+    {
+      "remote": "2025/07/anjdesigns13.webp",
+      "local": "services/anjdesigns-13.webp",
+      "status": "ok",
+      "bytes": 55830
+    },
+    {
+      "remote": "2025/07/anjdesign1sample.webp",
+      "local": "projects/apartment/01.webp",
+      "status": "ok",
+      "bytes": 23284
+    },
+    {
+      "remote": "2025/07/anjdesignsample2.webp",
+      "local": "projects/apartment/02.webp",
+      "status": "ok",
+      "bytes": 34484
+    },
+    {
+      "remote": "2025/07/sample1anj.webp",
+      "local": "projects/apartment/03.webp",
+      "status": "ok",
+      "bytes": 30918
+    },
+    {
+      "remote": "2025/07/anjdesignsample3.webp",
+      "local": "projects/apartment/04.webp",
+      "status": "ok",
+      "bytes": 27156
+    },
+    {
+      "remote": "2025/07/gk2anj1.webp",
+      "local": "projects/gk-2-house/01.webp",
+      "status": "ok",
+      "bytes": 29136
+    },
+    {
+      "remote": "2025/07/gk2anj.webp",
+      "local": "projects/gk-2-house/02.webp",
+      "status": "ok",
+      "bytes": 29478
+    },
+    {
+      "remote": "2025/07/gk2anj2.webp",
+      "local": "projects/gk-2-house/03.webp",
+      "status": "ok",
+      "bytes": 26474
+    },
+    {
+      "remote": "2025/07/gk2anj3.webp",
+      "local": "projects/gk-2-house/04.webp",
+      "status": "ok",
+      "bytes": 36346
+    },
+    {
+      "remote": "2025/07/dlgphaseanj4.png",
+      "local": "projects/dlf-phase-1-gurugram/01.png",
+      "status": "ok",
+      "bytes": 206383
+    },
+    {
+      "remote": "2025/07/dlfphaseanj4.webp",
+      "local": "projects/dlf-phase-1-gurugram/02.webp",
+      "status": "ok",
+      "bytes": 42210
+    },
+    {
+      "remote": "2025/07/dlfphaseanj2.webp",
+      "local": "projects/dlf-phase-1-gurugram/03.webp",
+      "status": "ok",
+      "bytes": 36630
+    },
+    {
+      "remote": "2025/07/dlfphaseanj3.webp",
+      "local": "projects/dlf-phase-1-gurugram/04.webp",
+      "status": "ok",
+      "bytes": 42138
+    },
+    {
+      "remote": "2025/07/chandigarhfarmhouse1.webp",
+      "local": "projects/farmhouse-chandigarh/01.webp",
+      "status": "ok",
+      "bytes": 46730
+    },
+    {
+      "remote": "2025/07/chandigarhfarmhouse2.webp",
+      "local": "projects/farmhouse-chandigarh/02.webp",
+      "status": "ok",
+      "bytes": 62452
+    },
+    {
+      "remote": "2025/07/chandigarhfarmhouse4.webp",
+      "local": "projects/farmhouse-chandigarh/03.webp",
+      "status": "ok",
+      "bytes": 48140
+    },
+    {
+      "remote": "2025/07/chandigarhfarmhouse3.webp",
+      "local": "projects/farmhouse-chandigarh/04.webp",
+      "status": "ok",
+      "bytes": 47258
+    },
+    {
+      "remote": "2025/07/nainitalanj1.webp",
+      "local": "projects/commercial-space-nainital/01.webp",
+      "status": "ok",
+      "bytes": 45662
+    },
+    {
+      "remote": "2025/07/nainitalanj3.png",
+      "local": "projects/commercial-space-nainital/02.png",
+      "status": "ok",
+      "bytes": 277765
+    },
+    {
+      "remote": "2025/07/nainitalanj4.webp",
+      "local": "projects/commercial-space-nainital/03.webp",
+      "status": "ok",
+      "bytes": 62736
+    },
+    {
+      "remote": "2025/07/nainitalanj2.webp",
+      "local": "projects/commercial-space-nainital/04.webp",
+      "status": "ok",
+      "bytes": 54032
+    },
+    {
+      "remote": "2025/07/golfcourseanj1.webp",
+      "local": "projects/villa-golf-course-extension/01.webp",
+      "status": "ok",
+      "bytes": 30204
+    },
+    {
+      "remote": "2025/07/golfcourseanj2.webp",
+      "local": "projects/villa-golf-course-extension/02.webp",
+      "status": "ok",
+      "bytes": 32074
+    },
+    {
+      "remote": "2025/07/golfcourseanj4.webp",
+      "local": "projects/villa-golf-course-extension/03.webp",
+      "status": "ok",
+      "bytes": 36624
+    },
+    {
+      "remote": "2025/07/golfcourseanj3.webp",
+      "local": "projects/villa-golf-course-extension/04.webp",
+      "status": "ok",
+      "bytes": 28364
+    },
+    {
+      "remote": "2025/07/usaanj1.webp",
+      "local": "projects/baltimore-usa/01.webp",
+      "status": "ok",
+      "bytes": 34774
+    },
+    {
+      "remote": "2025/07/usaanj3.webp",
+      "local": "projects/baltimore-usa/02.webp",
+      "status": "ok",
+      "bytes": 34096
+    },
+    {
+      "remote": "2025/07/usaanj2.webp",
+      "local": "projects/baltimore-usa/03.webp",
+      "status": "ok",
+      "bytes": 22666
+    },
+    {
+      "remote": "2025/07/usaanj4.webp",
+      "local": "projects/baltimore-usa/04.webp",
+      "status": "ok",
+      "bytes": 35290
+    },
+    {
+      "remote": "2025/07/golfcourseroadanj1.webp",
+      "local": "projects/apartment-golf-course-road/01.webp",
+      "status": "ok",
+      "bytes": 25530
+    },
+    {
+      "remote": "2025/07/golfcourseroadanj2.webp",
+      "local": "projects/apartment-golf-course-road/02.webp",
+      "status": "ok",
+      "bytes": 32002
+    },
+    {
+      "remote": "2025/07/golfcourseroadanj3.webp",
+      "local": "projects/apartment-golf-course-road/03.webp",
+      "status": "ok",
+      "bytes": 45414
+    },
+    {
+      "remote": "2025/07/golfcourseroadanj4.webp",
+      "local": "projects/apartment-golf-course-road/04.webp",
+      "status": "ok",
+      "bytes": 28146
+    },
+    {
+      "remote": "2025/07/contemporarybasedbedroomanj1sample.png",
+      "local": "projects/contemporary-bedroom/01.png",
+      "status": "ok",
+      "bytes": 163595
+    },
+    {
+      "remote": "2025/07/contemporarybasedbedroomanj2sample.webp",
+      "local": "projects/contemporary-bedroom/02.webp",
+      "status": "ok",
+      "bytes": 23272
+    },
+    {
+      "remote": "2025/07/contemporarybasedbedroomanj1.webp",
+      "local": "projects/contemporary-bedroom/03.webp",
+      "status": "ok",
+      "bytes": 26292
+    },
+    {
+      "remote": "2025/07/contemporarybasedbedroomanj2.webp",
+      "local": "projects/contemporary-bedroom/04.webp",
+      "status": "ok",
+      "bytes": 23160
+    },
+    {
+      "remote": "2025/07/livingroomanj1.webp",
+      "local": "projects/living-room/01.webp",
+      "status": "ok",
+      "bytes": 55562
+    },
+    {
+      "remote": "2025/07/livingroomanj2.webp",
+      "local": "projects/living-room/02.webp",
+      "status": "ok",
+      "bytes": 45672
+    },
+    {
+      "remote": "2025/07/livingroomanj3.webp",
+      "local": "projects/living-room/03.webp",
+      "status": "ok",
+      "bytes": 43056
+    },
+    {
+      "remote": "2025/07/livingroomanj4.webp",
+      "local": "projects/living-room/04.webp",
+      "status": "ok",
+      "bytes": 44152
+    },
+    {
+      "remote": "2025/07/Contemporary-living-Room-1.webp",
+      "local": "projects/contemporary-living-room/01.webp",
+      "status": "ok",
+      "bytes": 33068
+    },
+    {
+      "remote": "2025/07/Contemporary-living-Room-2.webp",
+      "local": "projects/contemporary-living-room/02.webp",
+      "status": "ok",
+      "bytes": 32788
+    },
+    {
+      "remote": "2025/07/Contemporary-living-Room-3.webp",
+      "local": "projects/contemporary-living-room/03.webp",
+      "status": "ok",
+      "bytes": 28910
+    },
+    {
+      "remote": "2025/07/Contemporary-living-Room-4.webp",
+      "local": "projects/contemporary-living-room/04.webp",
+      "status": "ok",
+      "bytes": 36388
+    },
+    {
+      "remote": "2025/07/vasantvihar1.webp",
+      "local": "projects/vasant-vihar/01.webp",
+      "status": "ok",
+      "bytes": 38646
+    },
+    {
+      "remote": "2025/07/vasantvihar2.webp",
+      "local": "projects/vasant-vihar/02.webp",
+      "status": "ok",
+      "bytes": 30386
+    },
+    {
+      "remote": "2025/07/vasantvihar3.webp",
+      "local": "projects/vasant-vihar/03.webp",
+      "status": "ok",
+      "bytes": 31436
+    },
+    {
+      "remote": "2025/07/vasantvihar4.webp",
+      "local": "projects/vasant-vihar/04.webp",
+      "status": "ok",
+      "bytes": 35956
+    },
+    {
+      "remote": "2025/07/Frame-36968.webp",
+      "local": "projects/standalone-house-vikaspuri/01.webp",
+      "status": "ok",
+      "bytes": 50204
+    },
+    {
+      "remote": "2025/07/Frame-36969.webp",
+      "local": "projects/standalone-house-vikaspuri/02.webp",
+      "status": "ok",
+      "bytes": 57454
+    },
+    {
+      "remote": "2025/07/Frame-36968-1.webp",
+      "local": "projects/standalone-house-vikaspuri/03.webp",
+      "status": "ok",
+      "bytes": 50204
+    },
+    {
+      "remote": "2025/07/Frame-36968-2.webp",
+      "local": "projects/standalone-house-vikaspuri/04.webp",
+      "status": "ok",
+      "bytes": 66210
+    },
+    {
+      "remote": "2025/07/Frame-36969-2.webp",
+      "local": "projects/standalone-house-vikaspuri/05.webp",
+      "status": "ok",
+      "bytes": 76732
+    },
+    {
+      "remote": "2025/07/anjproject1.webp",
+      "local": "home/tile-01.webp",
+      "status": "ok",
+      "bytes": 49878
+    },
+    {
+      "remote": "2025/07/anjproject2.webp",
+      "local": "home/tile-02.webp",
+      "status": "ok",
+      "bytes": 41362
+    },
+    {
+      "remote": "2025/07/anjproject3.webp",
+      "local": "home/tile-03.webp",
+      "status": "ok",
+      "bytes": 40796
+    },
+    {
+      "remote": "2025/07/anjproject4.webp",
+      "local": "home/tile-04.webp",
+      "status": "ok",
+      "bytes": 57926
+    },
+    {
+      "remote": "2025/07/anjproject5.webp",
+      "local": "home/tile-05.webp",
+      "status": "ok",
+      "bytes": 63324
+    },
+    {
+      "remote": "2025/07/anjproject6.webp",
+      "local": "home/tile-06.webp",
+      "status": "ok",
+      "bytes": 48090
+    },
+    {
+      "remote": "2025/07/anjproject7.webp",
+      "local": "home/tile-07.webp",
+      "status": "ok",
+      "bytes": 34114
+    },
+    {
+      "remote": "2025/07/anjproject8.webp",
+      "local": "home/tile-08.webp",
+      "status": "ok",
+      "bytes": 48370
+    },
+    {
+      "remote": "2025/07/anjproject9.webp",
+      "local": "home/tile-09.webp",
+      "status": "ok",
+      "bytes": 51826
+    },
+    {
+      "remote": "2025/07/anjproject10.webp",
+      "local": "home/tile-10.webp",
+      "status": "ok",
+      "bytes": 40580
+    },
+    {
+      "remote": "2025/07/anjproject11.webp",
+      "local": "home/tile-11.webp",
+      "status": "ok",
+      "bytes": 38066
+    },
+    {
+      "remote": "2025/07/anjproject12.webp",
+      "local": "home/tile-12.webp",
+      "status": "ok",
+      "bytes": 73686
+    },
+    {
+      "remote": "2025/07/0_Luxury_Apartment_Modern_Interior_1280x720.mp4",
+      "local": "videos/luxury-apartment.mp4",
+      "status": "ok",
+      "bytes": 5734178
+    },
+    {
+      "remote": "2025/07/2143343_Furniture_Modern_1920x1080.mp4",
+      "local": "videos/modern-furniture.mp4",
+      "status": "ok",
+      "bytes": 18893566
+    },
+    {
+      "remote": "2025/07/0_Home_Office_Desk_1280x720.mp4",
+      "local": "videos/home-office.mp4",
+      "status": "ok",
+      "bytes": 4179302
+    },
+    {
+      "remote": "2024/08/DECORINN-GALLERY-3-min.pdf",
+      "local": "pdf/decorinn-gallery-3.pdf",
+      "status": "ok",
+      "bytes": 4137144
+    },
+    {
+      "remote": "2024/08/DECOR-INN-LATEST-GALLERY-2-min.pdf",
+      "local": "pdf/decor-inn-latest-gallery-2.pdf",
+      "status": "ok",
+      "bytes": 2930634
+    },
+    {
+      "remote": "2024/08/Portfolio-2-min.pdf",
+      "local": "pdf/portfolio-2.pdf",
+      "status": "ok",
+      "bytes": 8290145
+    },
+    {
+      "remote": "2024/08/DECORINN-GALLERY-2022-2023-min.pdf",
+      "local": "pdf/decorinn-gallery-2022-2023.pdf",
+      "status": "ok",
+      "bytes": 9204943
+    }
+  ]
+}

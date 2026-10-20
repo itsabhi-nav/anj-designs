@@ -1,0 +1,49 @@
+{
+  "name": "anjdesigns",
+  "version": "2.0.0",
+  "private": true,
+  "description": "ANJ Designs by Decor Inn — luxury interior design, architectural design, bespoke furniture design and manufacturing, and turnkey interior projects.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "assets:fetch": "node scripts/fetch-original-assets.mjs",
+    "assets:extract-pdf": ".venv-pdf/bin/python scripts/extract-pdf-portfolio.py",
+    "assets:curate": ".venv-pdf/bin/python scripts/curate-craft-library.py",
+    "assets:normalize": ".venv-pdf/bin/python scripts/normalize-craft-library.py",
+    "assets:videos": ".venv-pdf/bin/python scripts/optimise-videos.py",
+    "assets:manifest": "node scripts/generate-asset-manifest.mjs",
+    "assets:variants": "node scripts/generate-image-variants.mjs",
+    "assets:hero-crops": "node scripts/generate-hero-crops.mjs",
+    "qa:visual": "node scripts/visual-qa.mjs",
+    "qa:lighthouse": "node scripts/lighthouse-audit.mjs",
+    "qa:vitals": "node scripts/measure-vitals.mjs",
+    "qa:lcptrace": "node scripts/measure-lcp-trace.mjs"
+  },
+  "dependencies": {
+    "gsap": "^3.13.0",
+    "lucide-react": "^0.469.0",
+    "motion": "^12.0.0",
+    "next": "^15.5.28",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.17.0",
+    "eslint-config-next": "^15.5.28",
+    "playwright": "^1.64.1",
+    "postcss": "^8.4.49",
+    "sharp": "^0.33.5",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=18.18.0"
+  }
+}

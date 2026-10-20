@@ -1,0 +1,490 @@
+[
+  {
+    "category": "bar-units",
+    "file": "craft/bar-units/bar-unit-decor-01.webp",
+    "width": 720,
+    "height": 1024,
+    "aspect": 0.7031,
+    "bytes": 76902
+  },
+  {
+    "category": "bar-units",
+    "file": "craft/bar-units/bar-unit-decor-02.webp",
+    "width": 1024,
+    "height": 576,
+    "aspect": 1.7778,
+    "bytes": 76774
+  },
+  {
+    "category": "bedroom-range",
+    "file": "craft/bedroom-range/bedroom-decorinn-01.webp",
+    "width": 1523,
+    "height": 1121,
+    "aspect": 1.3586,
+    "bytes": 199376
+  },
+  {
+    "category": "bedroom-range",
+    "file": "craft/bedroom-range/bedroom-decorinn-02.webp",
+    "width": 1024,
+    "height": 1536,
+    "aspect": 0.6667,
+    "bytes": 124296
+  },
+  {
+    "category": "bedroom-range",
+    "file": "craft/bedroom-range/bedroom-decorinn-03.webp",
+    "width": 1048,
+    "height": 667,
+    "aspect": 1.5712,
+    "bytes": 78736
+  },
+  {
+    "category": "bespoke-bed",
+    "file": "craft/bespoke-bed/bespoke-bed-decor-01.webp",
+    "width": 1192,
+    "height": 656,
+    "aspect": 1.8171,
+    "bytes": 39214
+  },
+  {
+    "category": "bespoke-bed",
+    "file": "craft/bespoke-bed/bespoke-bed-decor-02.webp",
+    "width": 825,
+    "height": 519,
+    "aspect": 1.5896,
+    "bytes": 25932
+  },
+  {
+    "category": "bespoke-bed",
+    "file": "craft/bespoke-bed/bespoke-bed-decor-03.webp",
+    "width": 720,
+    "height": 456,
+    "aspect": 1.5789,
+    "bytes": 25466
+  },
+  {
+    "category": "bespoke-bed",
+    "file": "craft/bespoke-bed/bespoke-bed-portfolio-01.webp",
+    "width": 1600,
+    "height": 1008,
+    "aspect": 1.5873,
+    "bytes": 76210
+  },
+  {
+    "category": "bespoke-bed",
+    "file": "craft/bespoke-bed/bespoke-bed-portfolio-02.webp",
+    "width": 1192,
+    "height": 656,
+    "aspect": 1.8171,
+    "bytes": 31474
+  },
+  {
+    "category": "bespoke-bed",
+    "file": "craft/bespoke-bed/bespoke-bed-portfolio-03.webp",
+    "width": 899,
+    "height": 720,
+    "aspect": 1.2486,
+    "bytes": 70058
+  },
+  {
+    "category": "bespoke-bed",
+    "file": "craft/bespoke-bed/bespoke-bed-portfolio-04.webp",
+    "width": 720,
+    "height": 688,
+    "aspect": 1.0465,
+    "bytes": 27354
+  },
+  {
+    "category": "bespoke-bed",
+    "file": "craft/bespoke-bed/bespoke-bed-portfolio-05.webp",
+    "width": 720,
+    "height": 456,
+    "aspect": 1.5789,
+    "bytes": 23854
+  },
+  {
+    "category": "design-gallery",
+    "file": "craft/design-gallery/design-concept-portfolio-01.webp",
+    "width": 1534,
+    "height": 1151,
+    "aspect": 1.3328,
+    "bytes": 173950
+  },
+  {
+    "category": "design-gallery",
+    "file": "craft/design-gallery/design-concept-portfolio-02.webp",
+    "width": 1280,
+    "height": 929,
+    "aspect": 1.3778,
+    "bytes": 83736
+  },
+  {
+    "category": "design-gallery",
+    "file": "craft/design-gallery/design-concept-portfolio-03.webp",
+    "width": 914,
+    "height": 875,
+    "aspect": 1.0446,
+    "bytes": 42800
+  },
+  {
+    "category": "design-gallery",
+    "file": "craft/design-gallery/design-concept-portfolio-04.webp",
+    "width": 708,
+    "height": 811,
+    "aspect": 0.873,
+    "bytes": 38720
+  },
+  {
+    "category": "design-gallery",
+    "file": "craft/design-gallery/design-concept-portfolio-05.webp",
+    "width": 760,
+    "height": 750,
+    "aspect": 1.0133,
+    "bytes": 46390
+  },
+  {
+    "category": "design-gallery",
+    "file": "craft/design-gallery/design-concept-portfolio-06.webp",
+    "width": 669,
+    "height": 735,
+    "aspect": 0.9102,
+    "bytes": 39938
+  },
+  {
+    "category": "dining",
+    "file": "craft/dining/dining-portfolio-01.webp",
+    "width": 1286,
+    "height": 965,
+    "aspect": 1.3326,
+    "bytes": 149120
+  },
+  {
+    "category": "dining",
+    "file": "craft/dining/dining-portfolio-02.webp",
+    "width": 960,
+    "height": 1280,
+    "aspect": 0.75,
+    "bytes": 90378
+  },
+  {
+    "category": "dining",
+    "file": "craft/dining/dining-portfolio-03.webp",
+    "width": 1280,
+    "height": 960,
+    "aspect": 1.3333,
+    "bytes": 82340
+  },
+  {
+    "category": "dining",
+    "file": "craft/dining/dining-portfolio-04.webp",
+    "width": 720,
+    "height": 848,
+    "aspect": 0.8491,
+    "bytes": 49482
+  },
+  {
+    "category": "dining",
+    "file": "craft/dining/dining-portfolio-05.webp",
+    "width": 1024,
+    "height": 576,
+    "aspect": 1.7778,
+    "bytes": 67798
+  },
+  {
+    "category": "dining",
+    "file": "craft/dining/dining-set-decor-01.webp",
+    "width": 735,
+    "height": 645,
+    "aspect": 1.1395,
+    "bytes": 87004
+  },
+  {
+    "category": "dining",
+    "file": "craft/dining/dining-set-decor-02.webp",
+    "width": 632,
+    "height": 474,
+    "aspect": 1.3333,
+    "bytes": 49074
+  },
+  {
+    "category": "dining-range",
+    "file": "craft/dining-range/dining-decorinn-01.webp",
+    "width": 1600,
+    "height": 1177,
+    "aspect": 1.3594,
+    "bytes": 158960
+  },
+  {
+    "category": "dining-range",
+    "file": "craft/dining-range/dining-decorinn-02.webp",
+    "width": 853,
+    "height": 571,
+    "aspect": 1.4939,
+    "bytes": 30120
+  },
+  {
+    "category": "dressers",
+    "file": "craft/dressers/dresser-decor-01.webp",
+    "width": 736,
+    "height": 736,
+    "aspect": 1.0,
+    "bytes": 62680
+  },
+  {
+    "category": "dressers",
+    "file": "craft/dressers/dresser-portfolio-01.webp",
+    "width": 1056,
+    "height": 680,
+    "aspect": 1.5529,
+    "bytes": 56896
+  },
+  {
+    "category": "dressers",
+    "file": "craft/dressers/dresser-portfolio-02.webp",
+    "width": 780,
+    "height": 855,
+    "aspect": 0.9123,
+    "bytes": 61312
+  },
+  {
+    "category": "dressers",
+    "file": "craft/dressers/dresser-portfolio-03.webp",
+    "width": 672,
+    "height": 912,
+    "aspect": 0.7368,
+    "bytes": 43904
+  },
+  {
+    "category": "dressers",
+    "file": "craft/dressers/dresser-portfolio-04.webp",
+    "width": 736,
+    "height": 736,
+    "aspect": 1.0,
+    "bytes": 52662
+  },
+  {
+    "category": "economic-range",
+    "file": "craft/economic-range/economic-range-decor-01.webp",
+    "width": 1280,
+    "height": 1439,
+    "aspect": 0.8895,
+    "bytes": 223030
+  },
+  {
+    "category": "economic-range",
+    "file": "craft/economic-range/economic-range-decor-02.webp",
+    "width": 736,
+    "height": 480,
+    "aspect": 1.5333,
+    "bytes": 49850
+  },
+  {
+    "category": "entrance-foyers",
+    "file": "craft/entrance-foyers/entrance-foyer-decorinn-01.webp",
+    "width": 1272,
+    "height": 936,
+    "aspect": 1.359,
+    "bytes": 187120
+  },
+  {
+    "category": "entrance-foyers",
+    "file": "craft/entrance-foyers/entrance-foyer-decorinn-02.webp",
+    "width": 1126,
+    "height": 895,
+    "aspect": 1.2581,
+    "bytes": 106656
+  },
+  {
+    "category": "entrance-foyers",
+    "file": "craft/entrance-foyers/entrance-foyer-decorinn-03.webp",
+    "width": 855,
+    "height": 696,
+    "aspect": 1.2284,
+    "bytes": 70998
+  },
+  {
+    "category": "entrance-foyers",
+    "file": "craft/entrance-foyers/entrance-foyer-decorinn-04.webp",
+    "width": 900,
+    "height": 604,
+    "aspect": 1.4901,
+    "bytes": 122560
+  },
+  {
+    "category": "entrance-foyers",
+    "file": "craft/entrance-foyers/entrance-foyer-decorinn-05.webp",
+    "width": 768,
+    "height": 510,
+    "aspect": 1.5059,
+    "bytes": 30618
+  },
+  {
+    "category": "finishes",
+    "file": "craft/finishes/finish-sample-decorinn-01.webp",
+    "width": 904,
+    "height": 1120,
+    "aspect": 0.8071,
+    "bytes": 146092
+  },
+  {
+    "category": "finishes",
+    "file": "craft/finishes/finish-sample-decorinn-02.webp",
+    "width": 682,
+    "height": 922,
+    "aspect": 0.7397,
+    "bytes": 11106
+  },
+  {
+    "category": "finishes",
+    "file": "craft/finishes/finish-sample-decorinn-03.webp",
+    "width": 682,
+    "height": 922,
+    "aspect": 0.7397,
+    "bytes": 29020
+  },
+  {
+    "category": "finishes",
+    "file": "craft/finishes/finish-sample-decorinn-04.webp",
+    "width": 820,
+    "height": 403,
+    "aspect": 2.0347,
+    "bytes": 38678
+  },
+  {
+    "category": "formal-living",
+    "file": "craft/formal-living/formal-living-decorinn-01.webp",
+    "width": 1469,
+    "height": 1064,
+    "aspect": 1.3806,
+    "bytes": 130918
+  },
+  {
+    "category": "handcrafted-work",
+    "file": "craft/handcrafted-work/handcrafted-decor-01.webp",
+    "width": 776,
+    "height": 552,
+    "aspect": 1.4058,
+    "bytes": 47292
+  },
+  {
+    "category": "handcrafted-work",
+    "file": "craft/handcrafted-work/handcrafted-decor-02.webp",
+    "width": 704,
+    "height": 496,
+    "aspect": 1.4194,
+    "bytes": 45002
+  },
+  {
+    "category": "informal-living",
+    "file": "craft/informal-living/informal-living-decorinn-01.webp",
+    "width": 1600,
+    "height": 1176,
+    "aspect": 1.3605,
+    "bytes": 120902
+  },
+  {
+    "category": "kids-bedroom",
+    "file": "craft/kids-bedroom/kids-bedroom-portfolio-01.webp",
+    "width": 704,
+    "height": 958,
+    "aspect": 0.7349,
+    "bytes": 49082
+  },
+  {
+    "category": "kids-bedroom",
+    "file": "craft/kids-bedroom/kids-bedroom-portfolio-02.webp",
+    "width": 818,
+    "height": 613,
+    "aspect": 1.3344,
+    "bytes": 28624
+  },
+  {
+    "category": "kids-bedroom",
+    "file": "craft/kids-bedroom/kids-bedroom-portfolio-03.webp",
+    "width": 802,
+    "height": 600,
+    "aspect": 1.3367,
+    "bytes": 41508
+  },
+  {
+    "category": "led-profile-lights",
+    "file": "craft/led-profile-lights/led-profile-decor-01.webp",
+    "width": 916,
+    "height": 687,
+    "aspect": 1.3333,
+    "bytes": 29802
+  },
+  {
+    "category": "led-profile-lights",
+    "file": "craft/led-profile-lights/led-profile-decor-02.webp",
+    "width": 713,
+    "height": 535,
+    "aspect": 1.3327,
+    "bytes": 20120
+  },
+  {
+    "category": "media-consoles",
+    "file": "craft/media-consoles/media-console-decor-01.webp",
+    "width": 735,
+    "height": 558,
+    "aspect": 1.3172,
+    "bytes": 28260
+  },
+  {
+    "category": "study-tables",
+    "file": "craft/study-tables/study-table-decor-01.webp",
+    "width": 736,
+    "height": 784,
+    "aspect": 0.9388,
+    "bytes": 52960
+  },
+  {
+    "category": "study-tables",
+    "file": "craft/study-tables/study-table-portfolio-01.webp",
+    "width": 666,
+    "height": 888,
+    "aspect": 0.75,
+    "bytes": 27386
+  },
+  {
+    "category": "study-tables",
+    "file": "craft/study-tables/study-table-portfolio-02.webp",
+    "width": 736,
+    "height": 784,
+    "aspect": 0.9388,
+    "bytes": 56014
+  },
+  {
+    "category": "study-tables",
+    "file": "craft/study-tables/study-table-portfolio-03.webp",
+    "width": 682,
+    "height": 825,
+    "aspect": 0.8267,
+    "bytes": 37374
+  },
+  {
+    "category": "wall-panels",
+    "file": "craft/wall-panels/wall-panel-decorinn-01.webp",
+    "width": 1090,
+    "height": 655,
+    "aspect": 1.6641,
+    "bytes": 42992
+  },
+  {
+    "category": "wall-panels",
+    "file": "craft/wall-panels/wall-panel-decorinn-02.webp",
+    "width": 780,
+    "height": 881,
+    "aspect": 0.8854,
+    "bytes": 72986
+  },
+  {
+    "category": "workshop",
+    "file": "craft/workshop/workshop-decorinn-01.webp",
+    "width": 1600,
+    "height": 951,
+    "aspect": 1.6824,
+    "bytes": 85172
+  }
+]

@@ -1,0 +1,419 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ────────────────────────────────────────────────────────────────────────────
+   ANJ Designs — global design system
+   ──────────────────────────────────────────────────────────────────────────── */
+
+@layer base {
+  :root {
+    --forest: #102820;
+    --forest-deep: #0b1c16;
+    --emerald: #204c3c;
+    --secondary: #315c49;
+    --sage: #849b80;
+    --soft-text: #a7b2aa;
+    --ivory: #f1f0e8;
+    --ivory-soft: #fafaf6;
+    --champagne: #c0a878;
+    --ink: #202720;
+
+    --header-h: 5.5rem;
+    --gutter: clamp(1.25rem, 5vw, 6rem);
+  }
+
+  * {
+    @apply border-line;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    /* Prevent off-canvas panels (mobile menu) from creating a horizontal
+       scrollbar on the document. */
+    overflow-x: clip;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-ivory-soft font-sans text-ink antialiased;
+    font-feature-settings: "kern", "liga", "calt";
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display font-normal text-ink;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--champagne);
+    color: var(--forest-deep);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--champagne);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--ivory);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #c3cfc2;
+    border-radius: 99px;
+    border: 3px solid var(--ivory);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--sage);
+  }
+}
+
+@layer components {
+  /* ── Layout ─────────────────────────────────────────────────────────── */
+  .shell {
+    width: 100%;
+    max-width: 96rem;
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  .shell-narrow {
+    width: 100%;
+    max-width: 68rem;
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  .grid-12 {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: clamp(1rem, 2.4vw, 2.25rem);
+  }
+
+  @media (max-width: 900px) {
+    .grid-12 {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 560px) {
+    .grid-12 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  /* ── Type ───────────────────────────────────────────────────────────── */
+  .eyebrow {
+    @apply text-eyebrow font-medium uppercase;
+    color: #5a705c;
+    letter-spacing: 0.24em;
+  }
+
+  .eyebrow-light {
+    color: var(--champagne);
+  }
+
+  .display-italic {
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .lede {
+    @apply text-body-lg text-ink-muted;
+    max-width: 46ch;
+  }
+
+  .rule {
+    height: 1px;
+    background: rgba(16, 40, 32, 0.14);
+  }
+
+  .rule-light {
+    height: 1px;
+    background: rgba(241, 240, 232, 0.16);
+  }
+
+  /* ── Buttons ────────────────────────────────────────────────────────── */
+  .btn {
+    @apply relative inline-flex select-none items-center justify-center gap-3
+           whitespace-nowrap text-[0.78rem] font-semibold uppercase
+           tracking-[0.18em] transition-all duration-500 ease-editorial;
+    padding: 1.0625rem 2rem;
+  }
+
+  .btn-primary {
+    @apply btn bg-forest text-ivory-soft;
+  }
+
+  .btn-primary:hover {
+    @apply bg-forest-emerald;
+  }
+
+  .btn-outline {
+    @apply btn border border-forest/25 text-forest;
+  }
+
+  .btn-outline:hover {
+    @apply border-forest bg-forest text-ivory-soft;
+  }
+
+  .btn-ghost-light {
+    @apply btn border border-ivory/30 text-ivory-soft;
+  }
+
+  .btn-ghost-light:hover {
+    @apply border-ivory-soft bg-ivory-soft text-forest;
+  }
+
+  .btn-sm {
+    padding: 0.8125rem 1.375rem;
+    font-size: 0.7rem;
+  }
+
+  /* Underline that grows from the left on hover */
+  .link-underline {
+    @apply relative inline-block;
+  }
+  .link-underline::after {
+    content: "";
+    @apply absolute bottom-0 left-0 h-px w-full origin-left scale-x-0
+           bg-current transition-transform duration-500 ease-editorial;
+  }
+  .link-underline:hover::after,
+  .link-underline:focus-visible::after {
+    @apply scale-x-100;
+  }
+
+  /* ── Image treatments ───────────────────────────────────────────────── */
+  .img-reveal {
+    clip-path: inset(0 0 100% 0);
+    will-change: clip-path;
+  }
+
+  .img-cover {
+    @apply h-full w-full object-cover;
+  }
+
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    mix-blend-mode: overlay;
+    background-image: url("/assets/brand/bg-color.webp");
+    background-size: cover;
+  }
+
+  /* ── Reveal defaults (no-JS safe) ───────────────────────────────────── */
+  .reveal-ready {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+  }
+
+  .reveal-ready.is-revealed {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .stagger-children > * {
+    opacity: 0;
+    transform: translate3d(0, 22px, 0);
+  }
+
+  .stagger-children.is-revealed > * {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .stagger-children.is-revealed > *:nth-child(1) {
+    transition-delay: 0.05s;
+  }
+  .stagger-children.is-revealed > *:nth-child(2) {
+    transition-delay: 0.14s;
+  }
+  .stagger-children.is-revealed > *:nth-child(3) {
+    transition-delay: 0.23s;
+  }
+  .stagger-children.is-revealed > *:nth-child(4) {
+    transition-delay: 0.32s;
+  }
+  .stagger-children.is-revealed > *:nth-child(5) {
+    transition-delay: 0.41s;
+  }
+  .stagger-children.is-revealed > *:nth-child(6) {
+    transition-delay: 0.5s;
+  }
+  .stagger-children.is-revealed > *:nth-child(n + 7) {
+    transition-delay: 0.58s;
+  }
+
+  /* ── Field styling ──────────────────────────────────────────────────── */
+  .field {
+    @apply w-full border-b border-forest/20 bg-transparent py-3 text-[0.98rem]
+           text-ink outline-none transition-colors duration-300;
+  }
+  .field::placeholder {
+    @apply text-ink/35;
+  }
+  .field:focus {
+    @apply border-champagne;
+  }
+  .field-label {
+    @apply block text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-sage;
+  }
+  .field-error {
+    @apply mt-1.5 flex items-center gap-1.5 text-[0.78rem] text-[#a1442f];
+  }
+
+  /* ── Marquee ────────────────────────────────────────────────────────── */
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+  }
+
+  .marquee-mask {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 8%,
+      #000 92%,
+      transparent
+    );
+  }
+
+  /* ── Hero choreography (pure CSS — no JS on the critical path) ───────── */
+  /*
+   * The reveal is built from transform and opacity only. Both run on the
+   * compositor, so the photograph is painted as soon as it decodes and the
+   * main thread stays free — an animated clip-path would force a repaint of
+   * the hero on every frame and delay the Largest Contentful Paint.
+   */
+  @keyframes hero-scale {
+    from {
+      transform: scale3d(1.1, 1.1, 1);
+    }
+    to {
+      transform: scale3d(1, 1, 1);
+    }
+  }
+
+  @keyframes hero-rise {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 28px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes hero-fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes hero-line {
+    from {
+      transform: translate3d(0, 110%, 0);
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  .hero-scale {
+    animation: hero-scale 1800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    will-change: transform;
+  }
+
+  .hero-veil {
+    animation: hero-fade 1200ms ease both;
+    will-change: opacity;
+  }
+
+  .hero-rise {
+    animation: hero-rise 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .hero-fade {
+    animation: hero-fade 900ms ease both;
+  }
+
+  .hero-line {
+    animation: hero-line 950ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .drag-none {
+    -webkit-user-drag: none;
+    user-select: none;
+  }
+}
+
+/* ── Reduced motion ─────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-ready,
+  .stagger-children > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .img-reveal {
+    clip-path: none !important;
+  }
+}
