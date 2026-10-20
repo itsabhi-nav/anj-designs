@@ -25,8 +25,10 @@ const nextConfig: NextConfig = {
      */
     loader: "custom",
     loaderFile: "./src/lib/image-loader.ts",
+    // The smallest bucket matches the smallest generated variant, so every
+    // URL in a srcset is an honest description of the file it points at.
     deviceSizes: [320, 420, 480, 640, 768, 1024, 1280, 1600, 1920, 2560],
-    imageSizes: [64, 96, 128, 200, 256, 320],
+    imageSizes: [320, 420, 480, 640],
     minimumCacheTTL: 60 * 60 * 24 * 365,
     remotePatterns: [
       {

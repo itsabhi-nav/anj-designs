@@ -4,6 +4,8 @@ import { ArrowUpRight } from "lucide-react";
 import { featuredProjects, projects } from "@/data/projects";
 import Media from "@/components/ui/Media";
 import Reveal from "@/components/motion/Reveal";
+import { SheetGrid, SheetMarker } from "@/components/ui/Sheet";
+import { nonBreakingHyphens } from "@/lib/utils";
 import ProjectRail from "./ProjectRail";
 
 /**
@@ -21,14 +23,15 @@ export default function FeaturedProjects() {
       className="relative overflow-hidden bg-ivory-soft py-[clamp(4.5rem,10vw,10rem)]"
       aria-labelledby="projects-title"
     >
-      <div className="shell">
+      <SheetGrid />
+      <div className="shell relative">
         <Reveal>
-          <div className="flex flex-col gap-6 border-b border-line pb-8 md:flex-row md:items-end md:justify-between">
+          <div className="flex flex-col gap-8 border-b border-line pb-8 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="eyebrow">~ Our projects ~</p>
+              <SheetMarker number="02" label="Selected work" note="13 projects" className="mb-8" />
               <h2
                 id="projects-title"
-                className="mt-5 max-w-2xl font-display text-display-md font-light text-ink"
+                className="max-w-2xl font-display text-display-md font-light text-ink"
               >
                 Work that carries the{" "}
                 <span className="display-italic text-forest-secondary">
@@ -49,6 +52,8 @@ export default function FeaturedProjects() {
           <article className="group grid grid-cols-1 items-end gap-8 lg:grid-cols-12 lg:gap-10">
             <Link
               href={`/projects/${lead.slug}`}
+              data-cursor="view"
+              data-cursor-label="View"
               className="relative block overflow-hidden lg:col-span-8"
             >
               <div className="relative aspect-[4/3] overflow-hidden bg-ivory-deep lg:aspect-[16/10]">
@@ -64,24 +69,30 @@ export default function FeaturedProjects() {
                   aria-hidden="true"
                   className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,28,22,0)_45%,rgba(11,28,22,.7)_100%)]"
                 />
-                <span className="absolute left-6 top-6 bg-forest/80 px-3.5 py-1.5 text-[0.6rem] uppercase tracking-[0.24em] text-champagne backdrop-blur-sm">
+                <span
+                  aria-hidden="true"
+                  className="frame-ticks absolute inset-5 opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+                />
+                <span className="absolute left-6 top-6 glass px-3.5 py-1.5 meta text-champagne">
                   Featured project
                 </span>
               </div>
             </Link>
 
             <div className="lg:col-span-4 lg:pb-4">
-              <p className="text-[0.68rem] uppercase tracking-[0.24em] text-sage">
+              <p className="meta text-sage">
                 {lead.location
                   ? `${lead.category} — ${lead.location}`
                   : lead.category}
               </p>
               <h3 className="mt-4 font-display text-display-sm font-light leading-[1.02] text-ink">
-                {lead.title}
+                {nonBreakingHyphens(lead.title)}
               </h3>
               <p className="mt-5 text-body-md text-ink-muted">{lead.note}</p>
               <Link
                 href={`/projects/${lead.slug}`}
+                data-cursor="view"
+                data-cursor-label="View"
                 className="btn btn-outline btn-sm mt-8 group/btn"
               >
                 View project
@@ -110,7 +121,7 @@ export default function FeaturedProjects() {
             className="group inline-flex items-center gap-3 border-b border-forest/25 pb-1.5 text-[0.78rem] font-semibold uppercase tracking-[0.2em] text-forest transition-colors duration-500 hover:border-forest"
           >
             View the complete portfolio
-            <span className="text-sage">({projects.length})</span>
+            <span className="meta text-sage">({projects.length})</span>
             <ArrowUpRight
               className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1"
               strokeWidth={1.5}

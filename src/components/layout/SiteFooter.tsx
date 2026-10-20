@@ -1,15 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowUp, ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 
 import { contact, navigation, site, social } from "@/data/site";
 import { services } from "@/data/services";
+import StudioClock from "@/components/ui/StudioClock";
+import { SheetGrid } from "@/components/ui/Sheet";
 
 export default function SiteFooter() {
   const year = new Date().getFullYear();
 
   return (
     <footer className="relative overflow-hidden bg-forest text-ivory-soft">
+      <SheetGrid tone="dark" />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-champagne/50 to-transparent"
@@ -18,6 +21,7 @@ export default function SiteFooter() {
         aria-hidden="true"
         className="pointer-events-none absolute -right-40 -top-40 h-[34rem] w-[34rem] rounded-full bg-secondary/25 blur-3xl"
       />
+      <div aria-hidden="true" className="grain-layer" />
 
       <div className="shell relative py-20 md:py-28">
         <div className="grid-12 gap-y-14">
@@ -44,11 +48,15 @@ export default function SiteFooter() {
             <p className="mt-5 font-display text-xl italic text-ivory/85">
               {site.belief}
             </p>
+            <p className="mt-7 flex items-baseline gap-3 border-t border-ivory/12 pt-5">
+              <span className="meta text-ivory/40">Studio time</span>
+              <StudioClock className="meta text-champagne" />
+            </p>
           </div>
 
           {/* Navigation */}
           <nav className="col-span-6 md:col-span-4 lg:col-span-2" aria-label="Footer">
-            <h2 className="eyebrow eyebrow-light">Navigate</h2>
+            <h2 className="meta text-champagne">Navigate</h2>
             <ul className="mt-6 space-y-1">
               {navigation.map((item) => (
                 <li key={item.href}>
@@ -68,7 +76,7 @@ export default function SiteFooter() {
             className="col-span-6 md:col-span-4 lg:col-span-2"
             aria-label="Services"
           >
-            <h2 className="eyebrow eyebrow-light">Expertise</h2>
+            <h2 className="meta text-champagne">Expertise</h2>
             <ul className="mt-6 space-y-1">
               {services.map((service) => (
                 <li key={service.id}>
@@ -85,7 +93,7 @@ export default function SiteFooter() {
 
           {/* Contact */}
           <div className="col-span-6 md:col-span-6 lg:col-span-4">
-            <h2 className="eyebrow eyebrow-light">Contact</h2>
+            <h2 className="meta text-champagne">Contact</h2>
             <ul className="mt-6 space-y-4 text-sm">
               <li>
                 <a
@@ -150,23 +158,41 @@ export default function SiteFooter() {
         </div>
 
         {/* Closing statement */}
-        <div className="mt-20 border-t border-ivory/12 pt-10">
-          <p className="max-w-3xl font-display text-[clamp(1.75rem,4vw,3.25rem)] leading-[1.08] text-ivory/90">
-            &ldquo;Where{" "}
-            <span className="display-italic text-champagne">designs</span> become
-            reality.&rdquo;
-          </p>
+        <div className="mt-20 grid gap-10 border-t border-ivory/12 pt-10 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-8">
+            <p className="font-display text-[clamp(1.9rem,4.6vw,4rem)] leading-[1.04] text-ivory/90">
+              &ldquo;Where{" "}
+              <span className="display-italic text-champagne">designs</span> become
+              reality.&rdquo;
+            </p>
+          </div>
+          <div className="lg:col-span-4 lg:text-right">
+            <Link
+              href="#top"
+              className="group inline-flex items-center gap-2 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-ivory/60 transition-colors duration-500 hover:text-champagne"
+            >
+              <ArrowUp
+                className="h-3.5 w-3.5 transition-transform duration-500 group-hover:-translate-y-0.5"
+                strokeWidth={1.5}
+                aria-hidden="true"
+              />
+              Back to top
+            </Link>
+          </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-4 border-t border-ivory/12 pt-8 text-xs text-ivory/60 md:flex-row md:items-center md:justify-between">
+        <div className="mt-12 flex flex-col gap-6 border-t border-ivory/12 pt-8 text-xs text-ivory/50 md:flex-row md:items-start md:justify-between">
           <p>
             © {year} {site.fullName}. All rights reserved.
           </p>
-          <p className="max-w-xl leading-relaxed">
-            {contact.additionalLocations[0].label}: {contact.additionalLocations[0].value}
-            <br />
-            {contact.additionalLocations[1].label}: {contact.additionalLocations[1].value}
-          </p>
+          <dl className="grid gap-4 sm:grid-cols-2 sm:gap-x-10">
+            {contact.additionalLocations.map((location) => (
+              <div key={location.label}>
+                <dt className="meta text-ivory/35">{location.label}</dt>
+                <dd className="mt-1.5 leading-relaxed">{location.value}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </div>
     </footer>

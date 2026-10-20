@@ -1,5 +1,6 @@
 import Media from "@/components/ui/Media";
 import Reveal from "@/components/motion/Reveal";
+import { SheetGrid, SheetMarker } from "@/components/ui/Sheet";
 import { site } from "@/data/site";
 
 /**
@@ -16,17 +17,23 @@ export default function BrandStatement() {
       className="relative overflow-hidden bg-ivory py-[clamp(4.5rem,10vw,10rem)]"
       aria-labelledby="brand-title"
     >
-      <div className="shell">
+      <SheetGrid />
+      <div className="shell relative">
         <div className="grid-12 gap-y-12">
           <div className="col-span-12 lg:col-span-7">
             <Reveal>
-              <p className="eyebrow">~ About us ~</p>
+              <SheetMarker
+                number="01"
+                label="The studio"
+                note="Est. 2010"
+                className="mb-10"
+              />
             </Reveal>
 
             <Reveal delay={80}>
               <h2
                 id="brand-title"
-                className="mt-6 font-display text-display-lg font-light leading-[0.94] text-ink"
+                className="font-display text-display-lg font-light leading-[0.94] text-ink"
               >
                 <span className="block">Built on Belief</span>
                 <span className="block text-ink/35">~ Powered by</span>
@@ -55,28 +62,25 @@ export default function BrandStatement() {
             </Reveal>
 
             <Reveal delay={280}>
-              <div className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-5 border-t border-line pt-7">
-                <div>
-                  <p className="font-display text-3xl text-forest">
-                    {site.founded}
-                  </p>
-                  <p className="mt-1 text-[0.68rem] uppercase tracking-[0.2em] text-sage">
-                    Studio founded
-                  </p>
-                </div>
-                <div>
-                  <p className="font-display text-3xl text-forest">20+</p>
-                  <p className="mt-1 text-[0.68rem] uppercase tracking-[0.2em] text-sage">
-                    Years in design
-                  </p>
-                </div>
-                <div>
-                  <p className="font-display text-3xl text-forest">22,500</p>
-                  <p className="mt-1 text-[0.68rem] uppercase tracking-[0.2em] text-sage">
-                    Sq ft production unit
-                  </p>
-                </div>
-              </div>
+              <dl className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-5 border-t border-line pt-7">
+                {[
+                  { value: site.founded, label: "Studio founded" },
+                  { value: "20+", label: "Years in design" },
+                  { value: "22,500", label: "Sq ft production unit" },
+                ].map((stat) => (
+                  <div key={stat.label}>
+                    <dt className="sr-only">{stat.label}</dt>
+                    <dd>
+                      <span className="block font-display text-3xl text-forest">
+                        {stat.value}
+                      </span>
+                      <span className="mt-1 block meta text-sage">
+                        {stat.label}
+                      </span>
+                    </dd>
+                  </div>
+                ))}
+              </dl>
             </Reveal>
           </div>
 

@@ -7,7 +7,7 @@ import { ArrowUpRight } from "lucide-react";
 
 import type { Project } from "@/types/project";
 import { projectCategories } from "@/data/projects";
-import { cn } from "@/lib/utils";
+import { cn, nonBreakingHyphens } from "@/lib/utils";
 
 /**
  * Asymmetrical project index with filtering.
@@ -116,7 +116,7 @@ export default function ProjectIndex({ projects }: { projects: Project[] }) {
                 <div className="mt-5 flex items-start justify-between gap-4">
                   <div>
                     <h2 className="font-display text-2xl font-light leading-tight text-ink transition-colors duration-500 group-hover:text-forest-secondary">
-                      {project.title}
+                      {nonBreakingHyphens(project.title)}
                     </h2>
                     <p className="mt-1.5 text-[0.66rem] uppercase tracking-[0.2em] text-sage">
                       {project.location ?? project.category}

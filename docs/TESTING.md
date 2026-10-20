@@ -68,12 +68,12 @@ Production build, mobile emulation (Moto G Power, Slow 4G, 4× CPU throttle).
 
 | Page | Perf | A11y | Best practices | SEO | FCP | TBT | CLS | Transfer |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Home | see §5 | **100** | **100** | **100** | 0.9 s | 20 ms | 0 | 632 kB |
-| About | 90 | **100** | **100** | **100** | 0.9 s | 20 ms | 0 | 545 kB |
-| Services | 91 | **100** | **100** | **100** | 0.9 s | 10 ms | 0 | 560 kB |
-| Projects | 93 | **100** | **100** | **100** | 0.9 s | 10 ms | 0 | 476 kB |
-| Project detail | 94 | **100** | **100** | **100** | 0.8 s | 20 ms | 0 | 493 kB |
-| Contact | 89 | **100** | **100** | **100** | 1.0 s | 30 ms | 0 | 427 kB |
+| Home | **91** | **100** | **100** | **100** | 1.1 s | 50 ms | 0 | 690 kB |
+| About | **93** | **100** | **100** | **100** | 1.1 s | 40 ms | 0 | 599 kB |
+| Services | **92** | **100** | **100** | **100** | 1.1 s | 20 ms | 0 | 613 kB |
+| Projects | **91** | **100** | **100** | **100** | 1.1 s | 20 ms | 0 | 510 kB |
+| Project detail | **92** | **100** | **100** | **100** | 0.9 s | 10 ms | 0 | 551 kB |
+| Contact | **90** | **100** | **100** | **100** | 1.2 s | 10 ms | 0 | 479 kB |
 
 Accessibility, Best Practices and SEO are **100 on every page**.
 
@@ -98,12 +98,12 @@ throttle**, mobile viewport 412 × 823 at DPR 1.75.
 
 | Page | TTFB | FCP | LCP | CLS | Transfer | Requests |
 | --- | --- | --- | --- | --- | --- | --- |
-| Home | 20 ms | 992 ms | see §5 | 0 | 460 kB | 25 |
-| About | 14 ms | 836 ms | 2208 ms | 0 | 387 kB | 19 |
-| Services | 18 ms | 832 ms | 2424 ms | 0 | 421 kB | 22 |
-| Projects | 8 ms | 840 ms | 1308 ms | 0 | 350 kB | 24 |
-| Project detail | 19 ms | 812 ms | 1296 ms | 0 | 363 kB | 24 |
-| Contact | 8 ms | 792 ms | 1480 ms | 0 | 358 kB | 20 |
+| Home | 14 ms | 920 ms | **1072 ms** | 0 | 544 kB | 30 |
+| About | 8 ms | 892 ms | 2432 ms | 0.0001 | 439 kB | 22 |
+| Services | 6 ms | 792 ms | 2164 ms | 0.012 | 473 kB | 25 |
+| Projects | 11 ms | 800 ms | 844 ms | 0.003 | 396 kB | 27 |
+| Project detail | 5 ms | 792 ms | 864 ms | 0.023 | 421 kB | 27 |
+| Contact | 4 ms | 820 ms | 1728 ms | 0.002 | 410 kB | 23 |
 
 Every metric is inside the brief's budget except the two pages at 2.2 – 2.4 s,
 which are marginally over the 2.5 s LCP target only because the whole page is
@@ -111,41 +111,55 @@ delivered over an emulated slow link.
 
 ---
 
-## 5. The Largest Contentful Paint on the home page
+## 5. The Largest Contentful Paint
 
-Lighthouse reports **no LCP at all** for `/` and therefore scores the
-performance category 0, while the other five pages score 89 – 94.
+Lighthouse reports a simulated LCP of 3.2 – 3.5 s. The Chrome DevTools Protocol
+trace shows the real figure: the hero photograph is painted as the Largest
+Contentful Paint **9 – 102 ms after the first paint** on every page.
 
-This is a reporting problem in the measurement stack, not the site:
+```
+Observed LCP (Chrome trace, relative to first paint)
+page            lcp      type
+--------------  -------  --------
+home              102ms  image
+about              60ms  image
+services           38ms  image
+projects            9ms  image
+project-detail     24ms  image
+contact            12ms  image
+```
 
-1. **Chrome's own trace** (`node scripts/measure-lcp-trace.mjs`) shows a
-   `largestContentfulPaint::Candidate` trace event on the home page, with the
-   hero photograph as the candidate, **62 ms after the first paint**:
+Under real throttling (Slow 4G + 4× CPU) the home page LCP is **1.07 s** with an
+FCP of 0.92 s.
 
-   ```
-   page            lcp      type
-   --------------  -------  --------
-   home               62ms  image
-   about              64ms  image
-   services           58ms  image
-   projects           66ms  image
-   project-detail     70ms  image
-   contact             9ms  image
-   ```
+### The `scroll-smooth` bug
 
-2. The `PerformanceObserver` API intermittently returns no entry for the home
-   page even though the trace contains one — the same flakiness appears in
-   Chrome's own `performance.getEntriesByType('largest-contentful-paint')`.
+An earlier build of the home page scored **0** in Lighthouse's performance
+category, because the LCP audit returned null. The cause was isolated by
+bisecting the page section by section:
 
-3. Lighthouse's `largest-contentful-paint-element` audit throws
-   `Required TraceElements gatherer encountered an error: Dependency
-   "RootCauses" failed with exception: Cannot read properties of undefined
-   (reading 'frame_sequence')` in this headless Chrome build, so it cannot
-   identify the element it would need to model.
+| Build | Result |
+| --- | --- |
+| Hero only | LCP reported, performance 90 |
+| Hero + first half of the page | LCP reported, performance 87 |
+| Hero + first half + the project rail | **LCP null, performance 0** |
+| Hero + first half, rail removed | LCP reported, performance 87 |
 
-Everything that *is* measurable is inside budget: FCP 0.8 – 1.0 s, CLS 0.000,
-TBT 10 – 30 ms, 460 kB total transfer, 25 requests, and the hero photograph
-painted 62 ms after the first paint.
+The rail is a horizontal scroll container. Setting `scroll-smooth` on it makes
+Chrome run compositor scroll animations, and those events break Lighthouse's
+trace processor (`RootCauses` → `Cannot read properties of undefined`), which
+cascades into a null LCP value and a zero performance score.
+
+**Fix:** `scroll-smooth` was removed from the rail. Scroll-snap was kept, and
+the arrow buttons still scroll programmatically with `behavior: "smooth"`. The
+home page moved from a **0 to a 91** performance score with no loss of
+experience.
+
+The same audit also surfaced a second real bug: the hero image was being
+served `loading="lazy"`, because the `<picture>` branch of the `Media`
+component suppressed Next's `priority` flag. The hero is now explicitly
+`loading="eager" fetchPriority="high"` with media-scoped preloads for each
+`<picture>` candidate.
 
 ---
 

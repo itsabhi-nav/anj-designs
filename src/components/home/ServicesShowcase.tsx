@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 
 import Media from "@/components/ui/Media";
 import Reveal from "@/components/motion/Reveal";
+import { SheetGrid, SheetMarker } from "@/components/ui/Sheet";
 import { services } from "@/data/services";
 
 /**
@@ -21,13 +22,19 @@ export default function ServicesShowcase() {
       className="relative bg-ivory py-[clamp(4.5rem,10vw,10rem)]"
       aria-labelledby="services-title"
     >
-      <div className="shell">
+      <SheetGrid />
+      <div className="shell relative">
         <Reveal>
           <div className="max-w-3xl">
-            <p className="eyebrow">~ Our services ~</p>
+            <SheetMarker
+              number="04"
+              label="Our services"
+              note="In depth"
+              className="mb-10"
+            />
             <h2
               id="services-title"
-              className="mt-5 font-display text-display-md font-light text-ink"
+              className="font-display text-display-md font-light text-ink"
             >
               Three disciplines,{" "}
               <span className="display-italic text-forest-secondary">

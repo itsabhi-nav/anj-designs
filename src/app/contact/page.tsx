@@ -8,6 +8,7 @@ import PageHero from "@/components/layout/PageHero";
 import ContactForm from "@/components/contact/ContactForm";
 import Reveal from "@/components/motion/Reveal";
 import { verifiedTestimonials } from "@/data/testimonials";
+import { SheetGrid, SheetMarker } from "@/components/ui/Sheet";
 
 export const metadata: Metadata = pageMetadata({
   title: "Contact — Start a conversation with ANJ Designs",
@@ -31,18 +32,25 @@ export default function ContactPage() {
 
       {/* Details + form */}
       <section className="relative bg-ivory-soft py-[clamp(3.5rem,7vw,7rem)]">
-        <div className="shell">
+        <SheetGrid />
+        <div className="shell relative">
           <div className="grid-12 gap-y-12">
             {/* Details */}
             <div className="col-span-12 lg:col-span-4">
               <Reveal>
+                <SheetMarker
+                  number="01"
+                  label="Reach the studio"
+                  note="Ghitorni, New Delhi"
+                  className="mb-9"
+                />
                 <h2 className="font-display text-display-sm font-light text-ink">
                   Reach the studio
                 </h2>
 
                 <div className="mt-8 space-y-8">
                   <div>
-                    <p className="text-[0.64rem] uppercase tracking-[0.2em] text-sage">
+                    <p className="meta text-sage">
                       Our address
                     </p>
                     <address className="mt-2.5 not-italic text-sm leading-relaxed text-ink-muted">
@@ -74,7 +82,7 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <p className="text-[0.64rem] uppercase tracking-[0.2em] text-sage">
+                    <p className="meta text-sage">
                       Our mailbox
                     </p>
                     <ul className="mt-2.5 space-y-1.5">
@@ -96,7 +104,7 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <p className="text-[0.64rem] uppercase tracking-[0.2em] text-sage">
+                    <p className="meta text-sage">
                       Contact numbers
                     </p>
                     <ul className="mt-2.5 space-y-1.5">
@@ -115,7 +123,7 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <p className="text-[0.64rem] uppercase tracking-[0.2em] text-sage">
+                    <p className="meta text-sage">
                       Also find us
                     </p>
                     <ul className="mt-3 flex flex-wrap gap-2">
@@ -155,7 +163,7 @@ export default function ContactPage() {
             <div className="grid gap-px border border-line bg-line sm:grid-cols-2">
               {contact.additionalLocations.map((location) => (
                 <div key={location.label} className="bg-ivory p-8 lg:p-10">
-                  <p className="text-[0.64rem] uppercase tracking-[0.2em] text-sage">
+                  <p className="meta text-sage">
                     {location.label}
                   </p>
                   <p className="mt-3 font-display text-2xl leading-snug text-ink">
@@ -170,7 +178,8 @@ export default function ContactPage() {
 
       {/* Testimonials */}
       <section className="relative bg-ivory-soft py-[clamp(3.5rem,7vw,7rem)]">
-        <div className="shell">
+        <SheetGrid />
+        <div className="shell relative">
           <Reveal>
             <h2 className="border-b border-line pb-4 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-ink">
               What do people say about ANJ?
@@ -188,7 +197,7 @@ export default function ContactPage() {
                       {testimonial.name}
                     </p>
                     {testimonial.location && (
-                      <p className="mt-0.5 text-[0.66rem] uppercase tracking-[0.16em] text-sage">
+                      <p className="meta mt-0.5 text-sage">
                         {testimonial.location}
                       </p>
                     )}

@@ -3,6 +3,7 @@ import Media from "@/components/ui/Media";
 import Reveal from "@/components/motion/Reveal";
 import DeferredVideo from "@/components/ui/DeferredVideo";
 import { PinnedStory } from "@/components/motion/ScrollChoreography";
+import { SheetGrid, SheetMarker } from "@/components/ui/Sheet";
 import CraftRangeList from "./CraftRangeList";
 
 /**
@@ -18,14 +19,20 @@ export default function Craftsmanship() {
       className="relative overflow-hidden bg-ivory py-[clamp(4.5rem,10vw,10rem)]"
       aria-labelledby="craft-title"
     >
-      <div className="shell">
+      <SheetGrid />
+      <div className="shell relative">
         <Reveal>
           <div className="grid-12 gap-y-8">
             <div className="col-span-12 lg:col-span-6">
-              <p className="eyebrow">~ Craftsmanship ~</p>
+              <SheetMarker
+                number="06"
+                label="Craftsmanship"
+                note="Panchkula, Haryana"
+                className="mb-10"
+              />
               <h2
                 id="craft-title"
-                className="mt-5 font-display text-display-md font-light text-ink"
+                className="font-display text-display-md font-light text-ink"
               >
                 Designed here.{" "}
                 <span className="display-italic text-forest-secondary">
@@ -33,7 +40,7 @@ export default function Craftsmanship() {
                 </span>
               </h2>
             </div>
-            <div className="col-span-12 lg:col-span-6 lg:pt-10">
+            <div className="col-span-12 lg:col-span-6 lg:pt-16">
               <p className="max-w-xl text-body-lg text-ink-muted">
                 {manufacturing.finish}. Every piece is produced in our own
                 {` ${manufacturing.location}`} facility — from the first cut to
@@ -46,27 +53,28 @@ export default function Craftsmanship() {
 
         {/* Manufacturing facts */}
         <Reveal delay={100} className="mt-14">
-          <div className="grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-3">
+          <dl className="grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-3">
             {[
               { value: "22,500", unit: "sq ft", label: "Manufacturing unit" },
               { value: "100+", unit: "", label: "Projects in the last two years" },
               { value: "8–10", unit: "", label: "Full bedrooms produced in 30 days" },
             ].map((stat) => (
-              <div key={stat.label} className="bg-ivory-soft p-8 lg:p-10">
-                <p className="font-display text-[clamp(2.5rem,5vw,3.75rem)] font-light leading-none text-forest">
-                  {stat.value}
-                  {stat.unit && (
-                    <span className="ml-2 text-[0.4em] tracking-[0.08em] text-sage">
-                      {stat.unit}
-                    </span>
-                  )}
-                </p>
-                <p className="mt-3 text-[0.68rem] uppercase tracking-[0.2em] text-ink-muted">
-                  {stat.label}
-                </p>
+              <div key={stat.label} className="sweep bg-ivory-soft p-8 lg:p-10">
+                <dt className="sr-only">{stat.label}</dt>
+                <dd>
+                  <span className="block font-display text-[clamp(2.5rem,5vw,3.75rem)] font-light leading-none text-forest">
+                    {stat.value}
+                    {stat.unit && (
+                      <span className="ml-2 text-[0.4em] tracking-[0.08em] text-sage">
+                        {stat.unit}
+                      </span>
+                    )}
+                  </span>
+                  <span className="mt-3 block meta text-sage">{stat.label}</span>
+                </dd>
               </div>
             ))}
-          </div>
+          </dl>
         </Reveal>
 
         {/* Image + process */}
@@ -135,7 +143,7 @@ export default function Craftsmanship() {
         <div className="mt-20 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-4">
             <Reveal>
-              <p className="eyebrow">Furniture ranges</p>
+              <p className="meta text-sage">Furniture ranges</p>
               <h3 className="mt-5 font-display text-display-sm font-light text-ink">
                 What we make
               </h3>

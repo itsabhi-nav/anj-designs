@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
 import Reveal from "@/components/motion/Reveal";
+import { SheetGrid, SheetMarker } from "@/components/ui/Sheet";
 
 /**
  * “Our Expertise” and “ANJ Work Approach” — the two four-part bands from the
@@ -59,14 +60,20 @@ export default function Approach() {
       className="relative overflow-hidden bg-ivory py-[clamp(4.5rem,10vw,10rem)]"
       aria-labelledby="approach-title"
     >
-      <div className="shell">
+      <SheetGrid />
+      <div className="shell relative">
         <Reveal>
           <div className="grid-12 gap-y-6">
             <div className="col-span-12 lg:col-span-5">
-              <p className="eyebrow">~ ANJ work approach ~</p>
+              <SheetMarker
+                number="07"
+                label="ANJ work approach"
+                note="Four commitments"
+                className="mb-10"
+              />
               <h2
                 id="approach-title"
-                className="mt-5 font-display text-display-md font-light text-ink"
+                className="font-display text-display-md font-light text-ink"
               >
                 How the work{" "}
                 <span className="display-italic text-forest-secondary">
@@ -74,7 +81,7 @@ export default function Approach() {
                 </span>
               </h2>
             </div>
-            <div className="col-span-12 lg:col-span-6 lg:col-start-7 lg:pt-10">
+            <div className="col-span-12 lg:col-span-6 lg:col-start-7 lg:pt-16">
               <p className="text-body-lg text-ink-muted">
                 Four commitments that run through every project — from the first
                 brief to the final handover.
@@ -85,11 +92,9 @@ export default function Approach() {
 
         <div className="mt-14 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
           {APPROACH.map((item, index) => (
-            <Reveal key={item.title} delay={index * 80} className="bg-ivory-soft">
+            <Reveal key={item.title} delay={index * 80} as="div" className="sweep bg-ivory-soft">
               <div className="h-full p-8 lg:p-9">
-                <p className="text-[0.62rem] uppercase tracking-[0.24em] text-champagne">
-                  0{index + 1}
-                </p>
+                <p className="meta text-champagne-dark">0{index + 1}</p>
                 <h3 className="mt-4 font-display text-2xl font-light text-ink">
                   {item.title}
                 </h3>
@@ -105,14 +110,12 @@ export default function Approach() {
         <div className="mt-24 grid grid-cols-1 gap-10 border-t border-line pt-16 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-4">
             <Reveal>
-              <p className="eyebrow">Our expertise</p>
+              <p className="meta text-sage">Our expertise</p>
               <h3 className="mt-5 font-display text-display-sm font-light text-ink">
                 Why clients come back
               </h3>
               <div className="mt-8">
-                <p className="text-[0.66rem] uppercase tracking-[0.22em] text-sage">
-                  Author&apos;s supervision
-                </p>
+                <p className="meta text-sage">Author&apos;s supervision</p>
                 <ul className="mt-4 space-y-2.5">
                   {SUPERVISION.map((item) => (
                     <li

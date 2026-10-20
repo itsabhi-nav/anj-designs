@@ -22,6 +22,20 @@ export function variantUrl(src: string, width: number): string {
 }
 
 /**
+ * The full srcset for an asset, for use on a `<link rel="preload">` so the
+ * browser can pick the right candidate instead of starting one request that
+ * is later aborted.
+ */
+export function variantSrcSet(src: string): string {
+  const widths = variantWidths[src];
+  if (!widths || widths.length === 0) return "";
+  const slug = src.replace(/^\/assets\//, "").replace(/\.[a-z0-9]+$/i, "");
+  return widths
+    .map((width) => `/assets/variants/${slug}-${width}.webp ${width}w`)
+    .join(", ");
+}
+
+/**
  * Custom image loader.
  *
  * The site does not resize images on the request path. Every responsive

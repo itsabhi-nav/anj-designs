@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { Cormorant_Garamond, JetBrains_Mono, Manrope } from "next/font/google";
 import "./globals.css";
 
 import { site } from "@/data/site";
@@ -7,6 +7,7 @@ import { organisationJsonLd } from "@/lib/seo";
 import SiteHeader from "@/components/layout/SiteHeader";
 import SiteFooter from "@/components/layout/SiteFooter";
 import ScrollProgress from "@/components/motion/ScrollProgress";
+import Cursor from "@/components/motion/Cursor";
 
 const display = Cormorant_Garamond({
   subsets: ["latin"],
@@ -22,6 +23,22 @@ const sans = Manrope({
   weight: ["400", "500", "600", "700"],
   display: "swap",
   variable: "--font-sans",
+  preload: true,
+});
+
+/**
+ * A third, technical voice. The mono is used only for metadata — sheet
+ * numbers, coordinates, labels, counters — which gives the site the language
+ * of a drawing set without turning the body copy into it.
+ *
+ * It is preloaded because it appears in the first viewport; loading it late
+ * would swap the metrics of the metadata labels and shift the layout.
+ */
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  display: "swap",
+  variable: "--font-mono",
   preload: true,
 });
 
@@ -93,8 +110,8 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${display.variable} ${sans.variable}`}>
-      <body className="min-h-screen bg-ivory-soft">
+    <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
+      <body id="top" className="min-h-screen bg-ivory-soft">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organisationJsonLd()) }}
@@ -109,6 +126,7 @@ export default function RootLayout({
         <main id="main">{children}</main>
         <SiteFooter />
         <ScrollProgress />
+        <Cursor />
       </body>
     </html>
   );

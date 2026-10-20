@@ -1,5 +1,6 @@
 import Media from "@/components/ui/Media";
 import Reveal from "@/components/motion/Reveal";
+import { SheetGrid, SheetMarker } from "@/components/ui/Sheet";
 
 /**
  * Design philosophy.
@@ -47,15 +48,22 @@ export default function Values() {
             "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E\")",
         }}
       />
+      <SheetGrid tone="dark" />
 
       <div className="shell relative">
         <div className="grid-12 gap-y-12">
           <div className="col-span-12 lg:col-span-4">
             <Reveal>
-              <p className="eyebrow eyebrow-light">Design philosophy</p>
+              <SheetMarker
+                number="05"
+                label="Design philosophy"
+                note="Four commitments"
+                tone="dark"
+                className="mb-10"
+              />
               <h2
                 id="values-title"
-                className="mt-5 font-display text-display-md font-light text-ivory-soft"
+                className="font-display text-display-md font-light text-ivory-soft"
               >
                 How we{" "}
                 <span className="display-italic text-champagne">think</span>
@@ -76,6 +84,10 @@ export default function Values() {
                   sizes="(max-width: 1024px) 100vw, 30vw"
                   className="h-full w-full object-cover"
                 />
+                <span
+                  aria-hidden="true"
+                  className="frame-ticks absolute inset-4 opacity-60"
+                />
               </div>
             </Reveal>
           </div>
@@ -86,16 +98,14 @@ export default function Values() {
                 <li key={value.word}>
                   <Reveal delay={index * 70}>
                     <div className="group grid grid-cols-1 gap-4 py-8 sm:grid-cols-12 sm:gap-8 sm:py-10">
-                      <p className="text-[0.62rem] uppercase tracking-[0.24em] text-champagne sm:col-span-1">
+                      <p className="meta text-champagne sm:col-span-1">
                         0{index + 1}
                       </p>
                       <h3 className="font-display text-3xl font-light uppercase tracking-[0.02em] text-ivory-soft transition-colors duration-500 group-hover:text-champagne sm:col-span-4 sm:text-4xl">
                         {value.word}
                       </h3>
                       <div className="sm:col-span-7">
-                        <p className="text-[0.66rem] uppercase tracking-[0.22em] text-ivory/55">
-                          {value.heading}
-                        </p>
+                        <p className="meta text-ivory/45">{value.heading}</p>
                         <p className="mt-3 max-w-xl text-sm leading-relaxed text-ivory/65">
                           {value.copy}
                         </p>

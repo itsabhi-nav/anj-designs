@@ -10,7 +10,32 @@ own photography.
   CSS transforms for the rest, `motion` for component-level interaction
 - **Icons** — `lucide-react`
 - **Images** — build-time responsive variants served as static, immutable files
-- **Fonts** — Cormorant Garamond + Manrope, self-hosted by `next/font`
+- **Fonts** — Cormorant Garamond · Manrope · JetBrains Mono, self-hosted by
+  `next/font`
+
+---
+
+## The design direction
+
+**An architectural drawing set, made cinematic.**
+
+The studio's own work is architecture and interiors, so the site is built as if
+it were a set of issued drawings — every section is numbered like a sheet, the
+metadata is set in a technical monospace, hairline column grids sit behind the
+content, and photographs are framed with architectural crop marks. Over that,
+a film-grade layer: a full-bleed hero that settles into place, a pinned
+horizontal run through the portfolio, a kinetic belief band, film grain, glass
+plates, a custom cursor and magnetic calls to action.
+
+Three typefaces, three jobs:
+
+| Face | Role |
+| --- | --- |
+| Cormorant Garamond | Display — headlines, statements, pull quotes |
+| Manrope | Body — running copy, navigation, buttons |
+| JetBrains Mono | Technical metadata — sheet numbers, coordinates, counters |
+
+Full detail in `docs/HANDOVER.md` §2.
 
 ---
 
@@ -58,17 +83,19 @@ src/
     globals.css             Design system
   components/
     layout/                 SiteHeader, MenuOverlay, SiteFooter, PageHero
-    home/                   Hero, BrandStatement, WhatWeDo, FeaturedProjects,
-                            ServicesShowcase, Values, Craftsmanship, Approach,
-                            Founder, ClosingCta, ProjectRail, CraftRangeList
+    home/                   Hero, BrandStatement, WhatWeDo, StudioIndex,
+                            BeliefBand, FeaturedProjects, ServicesShowcase,
+                            Values, Craftsmanship, Approach, Founder, ClosingCta,
+                            ProjectRail, CraftRangeList
     projects/               ProjectIndex, ProjectGallery, Lightbox
     contact/                ContactForm
-    motion/                 Reveal, SplitLines, ScrollProgress,
-                            ScrollChoreography (Parallax / PinnedStory)
-    ui/                     Media, Button, DeferredVideo
+    motion/                 Reveal, SplitLines, ScrollProgress, Cursor,
+                            Magnetic, ScrollChoreography (Parallax /
+                            PinnedStory / PinnedHorizontal)
+    ui/                     Media, Button, DeferredVideo, Sheet, StudioClock
   data/                     site, projects, services, testimonials, assets,
                             craft, image-variants (generated)
-  lib/                      media, image-loader, animations, seo, validation,
+  lib/                      media, image-loader, pointer, seo, validation,
                             email, utils
   types/                    project, service
 public/assets/              All original ANJ Designs assets + generated variants

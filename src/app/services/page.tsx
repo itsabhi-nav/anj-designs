@@ -224,7 +224,7 @@ export default function ServicesPage() {
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-4">
               <Reveal>
-                <p className="eyebrow">Bespoke furniture</p>
+                <p className="meta text-sage">Bespoke furniture</p>
                 <h2 className="mt-5 font-display text-display-sm font-light text-ink">
                   Ranges &amp; finishes
                 </h2>
@@ -281,7 +281,7 @@ export default function ServicesPage() {
         <div className="shell">
           <Reveal>
             <div className="max-w-3xl">
-              <p className="eyebrow eyebrow-light">~ Testimonials ~</p>
+              <p className="meta text-champagne">Testimonials</p>
               <h2 className="mt-5 font-display text-display-md font-light text-ivory-soft">
                 What do people say{" "}
                 <span className="display-italic text-champagne">about ANJ?</span>
@@ -346,9 +346,7 @@ function ServiceCopy({
   return (
     <div>
       <p
-        className={`text-[0.68rem] uppercase tracking-[0.24em] ${
-          dark ? "text-champagne" : "text-sage"
-        }`}
+        className={`meta ${dark ? "text-champagne" : "text-champagne-dark"}`}
       >
         {service.index} — {service.strapline}
       </p>

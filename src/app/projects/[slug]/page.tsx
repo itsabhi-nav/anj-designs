@@ -10,6 +10,7 @@ import {
   projects,
 } from "@/data/projects";
 import { pageMetadata } from "@/lib/seo";
+import { SheetGrid, SheetMarker } from "@/components/ui/Sheet";
 import { nonBreakingHyphens } from "@/lib/utils";
 import Media from "@/components/ui/Media";
 import Reveal from "@/components/motion/Reveal";
@@ -81,7 +82,7 @@ export default async function ProjectPage({
 
         <div className="shell pb-14 pt-36">
           <nav aria-label="Breadcrumb" className="hero-fade">
-            <ol className="flex items-center gap-2 text-[0.66rem] uppercase tracking-[0.2em] text-ivory/55">
+            <ol className="meta flex items-center gap-2 text-ivory/55">
               <li>
                 <Link href="/" className="transition-colors hover:text-champagne">
                   Home
@@ -123,7 +124,7 @@ export default async function ProjectPage({
                 className="hero-fade border-l border-champagne/40 pl-6"
                 style={{ animationDelay: "520ms" }}
               >
-                <p className="text-[0.62rem] uppercase tracking-[0.24em] text-champagne">
+                <p className="meta text-champagne">
                   {project.category}
                 </p>
                 {project.location && (
@@ -137,12 +138,18 @@ export default async function ProjectPage({
 
       {/* Intro + facts */}
       <section className="relative bg-ivory-soft py-[clamp(3.5rem,7vw,7rem)]">
-        <div className="shell">
+        <SheetGrid />
+        <div className="shell relative">
           <div className="grid-12 gap-y-10">
             <div className="col-span-12 lg:col-span-7">
               <Reveal>
-                <p className="eyebrow">The project</p>
-                <p className="mt-5 max-w-2xl font-display text-2xl leading-snug text-ink sm:text-3xl">
+                <SheetMarker
+                  number="01"
+                  label="The project"
+                  note={project.category}
+                  className="mb-9"
+                />
+                <p className="max-w-2xl font-display text-2xl leading-snug text-ink sm:text-3xl">
                   {project.note}
                 </p>
                 <p className="mt-6 max-w-xl text-sm leading-relaxed text-ink-muted">
@@ -168,7 +175,7 @@ export default async function ProjectPage({
                       key={row.label}
                       className="flex items-baseline justify-between gap-6 border-b border-line py-4"
                     >
-                      <dt className="text-[0.64rem] uppercase tracking-[0.2em] text-sage">
+                      <dt className="meta text-sage">
                         {row.label}
                       </dt>
                       <dd className="text-right text-sm text-ink">{row.value}</dd>
@@ -186,10 +193,8 @@ export default async function ProjectPage({
         <div className="shell">
           <Reveal>
             <div className="mb-8 flex items-center justify-between border-b border-line pb-4">
-              <h2 className="text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-ink">
-                Gallery
-              </h2>
-              <p className="text-[0.66rem] uppercase tracking-[0.18em] text-sage">
+              <h2 className="meta text-ink">02 — Gallery</h2>
+              <p className="meta text-sage">
                 Select an image to enlarge
               </p>
             </div>
@@ -213,7 +218,7 @@ export default async function ProjectPage({
                   aria-hidden="true"
                 />
                 <span>
-                  <span className="block text-[0.62rem] uppercase tracking-[0.22em] text-sage">
+                  <span className="meta block text-sage">
                     Previous project
                   </span>
                   <span className="mt-1.5 block font-display text-2xl text-ink transition-colors duration-500 group-hover:text-forest-secondary">
@@ -228,7 +233,7 @@ export default async function ProjectPage({
                 className="group flex items-center justify-end gap-5 bg-ivory p-8 text-right transition-colors duration-500 hover:bg-ivory-soft lg:p-10"
               >
                 <span>
-                  <span className="block text-[0.62rem] uppercase tracking-[0.22em] text-sage">
+                  <span className="meta block text-sage">
                     Next project
                   </span>
                   <span className="mt-1.5 block font-display text-2xl text-ink transition-colors duration-500 group-hover:text-forest-secondary">
@@ -250,8 +255,8 @@ export default async function ProjectPage({
       <section className="relative bg-ivory-soft py-[clamp(3.5rem,7vw,7rem)]">
         <div className="shell">
           <Reveal>
-            <h2 className="border-b border-line pb-4 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-ink">
-              Related projects
+            <h2 className="border-b border-line pb-4 meta text-ink">
+              03 — Related projects
             </h2>
           </Reveal>
 
@@ -272,7 +277,7 @@ export default async function ProjectPage({
                   <h3 className="mt-4 font-display text-xl text-ink transition-colors duration-500 group-hover:text-forest-secondary">
                     {item.title}
                   </h3>
-                  <p className="mt-1 text-[0.64rem] uppercase tracking-[0.2em] text-sage">
+                  <p className="meta mt-1 text-sage">
                     {item.location ?? item.category}
                   </p>
                 </Link>

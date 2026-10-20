@@ -5,6 +5,7 @@ import { pageMetadata } from "@/lib/seo";
 import Media from "@/components/ui/Media";
 import Reveal from "@/components/motion/Reveal";
 import SplitLines from "@/components/motion/SplitLines";
+import { SheetGrid, SheetMarker } from "@/components/ui/Sheet";
 import Button from "@/components/ui/Button";
 import PageHero from "@/components/layout/PageHero";
 import Values from "@/components/home/Values";
@@ -80,12 +81,18 @@ export default function AboutPage() {
 
       {/* Company story */}
       <section className="relative bg-ivory-soft py-[clamp(4.5rem,10vw,10rem)]">
-        <div className="shell">
+        <SheetGrid />
+        <div className="shell relative">
           <div className="grid-12 gap-y-12">
             <div className="col-span-12 lg:col-span-5">
               <Reveal>
-                <p className="eyebrow">~ Creating meaningful spaces ~</p>
-                <h2 className="mt-5 font-display text-display-md font-light text-ink">
+                <SheetMarker
+                  number="01"
+                  label="The studio"
+                  note="Est. 2010"
+                  className="mb-10"
+                />
+                <h2 className="font-display text-display-md font-light text-ink">
                   <SplitLines text="From a simple idea to a creative studio" />
                 </h2>
               </Reveal>
@@ -159,17 +166,27 @@ export default function AboutPage() {
 
       {/* Vision & mission */}
       <section className="relative overflow-hidden bg-forest py-[clamp(4.5rem,10vw,9rem)]">
+        <SheetGrid tone="dark" />
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -right-32 top-1/4 h-[32rem] w-[32rem] rounded-full bg-secondary/25 blur-3xl"
         />
+        <div aria-hidden="true" className="grain-layer" />
         <div className="shell relative">
+          <Reveal>
+            <SheetMarker
+              number="02"
+              label="Vision & mission"
+              note="Published by the studio"
+              tone="dark"
+              className="mb-14"
+            />
+          </Reveal>
+
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
             <Reveal>
               <article className="border-t border-ivory/20 pt-8">
-                <p className="text-[0.66rem] uppercase tracking-[0.26em] text-champagne">
-                  Our vision
-                </p>
+                <p className="meta text-champagne">Our vision</p>
                 <p className="mt-5 font-display text-2xl leading-snug text-ivory-soft sm:text-3xl">
                   “Our vision is to lead the interior design and fit-out industry
                   as the trusted partner of choice. We aim to shape inspiring
@@ -182,9 +199,7 @@ export default function AboutPage() {
 
             <Reveal delay={120}>
               <article className="border-t border-ivory/20 pt-8">
-                <p className="text-[0.66rem] uppercase tracking-[0.26em] text-champagne">
-                  Our mission
-                </p>
+                <p className="meta text-champagne">Our mission</p>
                 <p className="mt-5 font-display text-2xl leading-snug text-ivory-soft sm:text-3xl">
                   “Our purpose is to design spaces that feel personal, timeless,
                   and uplifting. Every project is driven by a balance of innovation
@@ -233,11 +248,16 @@ export default function AboutPage() {
 
             <div className="col-span-12 md:col-span-7 lg:col-span-7 lg:col-start-6">
               <Reveal delay={90}>
-                <p className="eyebrow">~ The founder ~</p>
-                <h2 className="mt-5 font-display text-display-md font-light text-ink">
+                <SheetMarker
+                  number="03"
+                  label="The founder"
+                  note="Annie Nagpal Jain"
+                  className="mb-10"
+                />
+                <h2 className="font-display text-display-md font-light text-ink">
                   Annie Nagpal Jain
                 </h2>
-                <p className="mt-3 text-[0.68rem] uppercase tracking-[0.24em] text-sage">
+                <p className="mt-3 meta text-sage">
                   Founder of ANJ Designs by Decor Inn
                 </p>
               </Reveal>
@@ -315,11 +335,17 @@ export default function AboutPage() {
 
       {/* Approach & craftsmanship */}
       <section className="relative bg-ivory-soft py-[clamp(4.5rem,10vw,10rem)]">
-        <div className="shell">
+        <SheetGrid />
+        <div className="shell relative">
           <Reveal>
             <div className="max-w-3xl">
-              <p className="eyebrow">~ Approach & craftsmanship ~</p>
-              <h2 className="mt-5 font-display text-display-md font-light text-ink">
+              <SheetMarker
+                number="05"
+                label="Approach & craftsmanship"
+                note="Four principles"
+                className="mb-10"
+              />
+              <h2 className="font-display text-display-md font-light text-ink">
                 How a project is{" "}
                 <span className="display-italic text-forest-secondary">
                   actually run

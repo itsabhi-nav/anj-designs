@@ -6,7 +6,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 
 import type { Project } from "@/types/project";
-import { cn } from "@/lib/utils";
+import { cn, nonBreakingHyphens } from "@/lib/utils";
 
 /**
  * Horizontally navigable project rail.
@@ -50,9 +50,7 @@ export default function ProjectRail({ projects }: { projects: Project[] }) {
   return (
     <div>
       <div className="mb-6 flex items-center justify-between gap-6">
-        <p className="text-[0.68rem] uppercase tracking-[0.24em] text-sage">
-          Drag or use the arrows
-        </p>
+        <p className="meta text-sage">Drag or use the arrows</p>
         <div className="flex items-center gap-2">
           <button
             type="button"
@@ -77,7 +75,7 @@ export default function ProjectRail({ projects }: { projects: Project[] }) {
 
       <div
         ref={trackRef}
-        className="no-scrollbar -mx-[var(--gutter)] flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth px-[var(--gutter)] pb-2"
+        className="no-scrollbar -mx-[var(--gutter)] flex snap-x snap-mandatory gap-6 overflow-x-auto px-[var(--gutter)] pb-2"
       >
         {projects.map((project, index) => (
           <article
@@ -87,6 +85,8 @@ export default function ProjectRail({ projects }: { projects: Project[] }) {
           >
             <Link
               href={`/projects/${project.slug}`}
+              data-cursor="view"
+              data-cursor-label="View"
               className="block focus-visible:outline-none"
             >
               <div className="relative aspect-[4/5] overflow-hidden bg-ivory-deep">
@@ -103,12 +103,16 @@ export default function ProjectRail({ projects }: { projects: Project[] }) {
                   aria-hidden="true"
                   className="absolute inset-0 bg-[linear-gradient(180deg,transparent_45%,rgba(11,28,22,.85)_100%)]"
                 />
-                <span className="absolute left-5 top-5 text-[0.62rem] tracking-[0.26em] text-champagne">
+                <span
+                  aria-hidden="true"
+                  className="frame-ticks absolute inset-4 opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+                />
+                <span className="absolute left-5 top-5 meta text-champagne">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <div className="absolute inset-x-0 bottom-0 p-6">
                   <h3 className="font-display text-2xl leading-tight text-ivory-soft">
-                    {project.title}
+                    {nonBreakingHyphens(project.title)}
                   </h3>
                   <p className="mt-1.5 text-[0.68rem] uppercase tracking-[0.2em] text-ivory/60">
                     {project.location ?? project.category}

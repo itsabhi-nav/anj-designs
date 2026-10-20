@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import Media from "@/components/ui/Media";
 import Reveal from "@/components/motion/Reveal";
 import { Parallax } from "@/components/motion/ScrollChoreography";
+import { SheetGrid, SheetMarker } from "@/components/ui/Sheet";
 
 /**
  * Founder profile.
@@ -18,7 +19,8 @@ export default function Founder() {
       className="relative overflow-hidden bg-ivory-soft py-[clamp(4.5rem,10vw,10rem)]"
       aria-labelledby="founder-title"
     >
-      <div className="shell">
+      <SheetGrid />
+      <div className="shell relative">
         <div className="grid-12 items-center gap-y-12">
           {/* Portrait */}
           <div className="col-span-12 md:col-span-5 lg:col-span-4">
@@ -45,14 +47,19 @@ export default function Founder() {
           {/* Biography */}
           <div className="col-span-12 md:col-span-7 lg:col-span-7 lg:col-start-6">
             <Reveal delay={90}>
-              <p className="eyebrow">~ The founder ~</p>
+              <SheetMarker
+                number="08"
+                label="The founder"
+                note="Annie Nagpal Jain"
+                className="mb-10"
+              />
               <h2
                 id="founder-title"
-                className="mt-5 font-display text-display-md font-light text-ink"
+                className="font-display text-display-md font-light text-ink"
               >
                 Annie Nagpal Jain
               </h2>
-              <p className="mt-3 text-[0.68rem] uppercase tracking-[0.24em] text-sage">
+              <p className="mt-3 meta text-sage">
                 Founder of ANJ Designs by Decor Inn
               </p>
             </Reveal>

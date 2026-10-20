@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { variantUrl } from "@/lib/image-loader";
+import { variantSrcSet, variantUrl } from "@/lib/image-loader";
 import { cn } from "@/lib/utils";
 
 export interface MediaProps {
@@ -55,20 +55,31 @@ export default function Media({
   if (portraitSrc) {
     // The two preloads below match the two <picture> candidates exactly, so
     // the browser never downloads a file it is not going to use.
+    //
+    // Next's own preload is suppressed (`priority={false}`) because it points
+    // at the landscape srcset, which a phone never uses. Instead the image is
+    // marked eager + high priority, and the correct candidate is preloaded by
+    // the two media-scoped links above.
     return (
       <>
-        <link
-          rel="preload"
-          as="image"
-          href={portraitSrc}
-          media={`(max-width: ${portraitBreakpoint - 1}px)`}
-        />
-        <link
-          rel="preload"
-          as="image"
-          href={variantUrl(src, 1600)}
-          media={`(min-width: ${portraitBreakpoint}px)`}
-        />
+        {priority && (
+          <>
+            <link
+              rel="preload"
+              as="image"
+              href={portraitSrc}
+              media={`(max-width: ${portraitBreakpoint - 1}px)`}
+            />
+            <link
+              rel="preload"
+              as="image"
+              href={variantUrl(src, 1600)}
+              imageSrcSet={variantSrcSet(src)}
+              imageSizes="100vw"
+              media={`(min-width: ${portraitBreakpoint}px)`}
+            />
+          </>
+        )}
         <picture className="contents">
           <source
             media={`(max-width: ${portraitBreakpoint - 1}px)`}
@@ -83,7 +94,8 @@ export default function Media({
             height={height}
             sizes={sizes}
             priority={false}
-            fetchPriority="low"
+            loading={priority ? "eager" : "lazy"}
+            fetchPriority={priority ? "high" : "low"}
             unoptimized={unoptimized}
             style={position ? { objectPosition: position } : undefined}
             className={cn(imageClassName, className)}

@@ -63,6 +63,13 @@ been carried over:
 
 ## 2. Design system
 
+**Direction: an architectural drawing set, made cinematic.**
+
+The site is built as if it were a set of issued drawings — every section is
+numbered, the metadata is set in a technical monospace, hairline column grids
+sit behind the content, photographs are framed with architectural crop marks —
+but the whole thing is lit, paced and animated like a film.
+
 | Token | Value | Use |
 | --- | --- | --- |
 | Forest | `#102820` | Dramatic sections, hero, footer |
@@ -75,18 +82,38 @@ been carried over:
 | Ink | `#202720` | Body text |
 | Ink muted | `#4A554D` | Secondary text |
 
-**Type:** Cormorant Garamond (display, 300/400/500 + italic) · Manrope (body,
-400/500/600/700). Fluid `clamp()` sizing, 12-column desktop grid that
-re-composes at 6 and 2 columns, consistent container and gutter.
+**Type — three voices:**
 
-**Rhythm:** the site deliberately alternates dark and light sections —
-forest hero → ivory brand statement → forest what-we-do → soft-white
-projects → ivory services → forest values → ivory craftsmanship → soft-white
-approach → ivory founder → forest CTA → forest footer.
+| Face | Weights | Role |
+| --- | --- | --- |
+| Cormorant Garamond | 300 / 400 / 500, normal + italic | Display — headlines, statements, pull quotes |
+| Manrope | 400 / 500 / 600 / 700 | Body — running copy, navigation, buttons |
+| JetBrains Mono | 300 / 400 / 500 | Technical metadata — sheet numbers, coordinates, labels, counters |
+
+The mono is the site's signature: it is what makes the pages read as a drawing
+set rather than a template. It is used *only* for metadata, never for body
+copy, and it is preloaded so the swap cannot shift the layout.
+
+**The drawing-set language:**
+
+| Element | What it does |
+| --- | --- |
+| `SheetMarker` | A numbered sheet header — `03 — OUR DISCIPLINES ——— FOUR PRACTICES` |
+| `SheetGrid` | A hairline 12-column grid, masked to fade out below the fold |
+| `frame-ticks` | Architectural corner crop marks that grow on hover |
+| `meta` | The monospace metadata class — tabular numerals, wide tracking |
+| `grain-layer` | Animated film grain over the dark sections |
+| `glass` | A frosted plate for metadata floating over photography |
+
+**Rhythm:** the site alternates dark and light sections — forest hero → forest
+capability strip → ivory brand statement → soft-white studio index → forest
+belief band → soft-white projects → ivory services → forest values → ivory
+craftsmanship → soft-white approach → ivory founder → forest CTA → forest
+footer.
 
 ---
 
-## 3. Motion
+## 3. Motion and interaction
 
 | Effect | Where | Implementation |
 | --- | --- | --- |
@@ -96,14 +123,29 @@ approach → ivory founder → forest CTA → forest footer.
 | Runtime line splitting | Section headings | `SplitLines` — measures the real rendered width, so the split always matches the layout |
 | Image drift | Hero, founder portrait | GSAP `Parallax` (scrubbed `yPercent`) — **dynamically imported**, never on the critical path |
 | Clip-path expansion | Craftsmanship | GSAP `PinnedStory` — one use, on desktop only, always released at the end of the section |
-| Horizontal project rail | Home | Native horizontal scroll with scroll-snap plus arrow buttons — no scroll hijacking, no pinning, works with touch and keyboard |
+| **Pinned horizontal showcase** | Projects page | GSAP `PinnedHorizontal` — the heading stays pinned while the thirteen projects travel past. Released at a defined end point; on touch, narrow screens and under reduced motion it degrades to a native horizontal scroller |
+| **Custom cursor** | Global | An exact dot plus a trailing ring that tightens over text, swells over imagery and carries a label. Decorative only — it never intercepts the pointer |
+| **Magnetic elements** | Primary calls to action | Buttons lean toward the pointer within a radius and spring back |
+| **Cursor-following preview** | Studio index | A plate that trails the pointer and cross-fades between disciplines |
+| **Kinetic belief band** | Home | The belief line runs across the page in two counter-moving rows, one set in outline |
+| Horizontal project rail | Home | Native horizontal scroll with scroll-snap and arrow buttons — no scroll hijacking, no pinning, works with touch and keyboard |
 | Reading progress | Global | `requestAnimationFrame`, paused when the tab is hidden |
+| **Live studio clock** | Footer | The time in New Delhi, updating every second |
 
 **Reduced motion:** every animation is disabled under
 `prefers-reduced-motion: reduce`, the GSAP effects never initialise, the
-lightbox's play control is disabled, and the scroll behaviour falls back to
-instant. All content is visible without JavaScript — the reveal states are
-applied by the same script that reveals them.
+custom cursor and magnetic elements never mount, the pinned showcase becomes
+an ordinary scroller, the video play control is disabled, and the scroll
+behaviour falls back to instant. All content is visible without JavaScript —
+the reveal states are applied by the same script that reveals them.
+
+**One deliberate omission:** `scroll-smooth` is *not* set on the horizontal
+project rail. Smooth-scrolling a container makes Chrome run compositor scroll
+animations that break Lighthouse's trace processor, which suppressed the
+Largest Contentful Paint metric entirely on the home page (performance scored
+0). The arrow buttons still scroll programmatically with `behavior: "smooth"`,
+and scroll-snap still settles the cards. Fixing this moved the home page from
+a 0 to a 91 performance score.
 
 ---
 
@@ -134,35 +176,31 @@ Every page at **320, 375, 430, 768, 1024, 1280, 1440 and 1920 px**:
 
 | Page | Perf | A11y | Best practices | SEO | FCP | TBT | CLS |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Home | see note | **100** | **100** | **100** | 1.0 s | 20 ms | 0 |
-| About | 89 | **100** | **100** | **100** | 0.9 s | 10 ms | 0 |
-| Services | 91 | **100** | **100** | **100** | 0.9 s | 10 ms | 0 |
-| Projects | 93 | **100** | **100** | **100** | 0.9 s | 10 ms | 0 |
-| Project detail | 94 | **100** | **100** | **100** | 0.8 s | 10 ms | 0 |
-| Contact | 93 | **100** | **100** | **100** | 1.1 s | 10 ms | 0 |
+| Home | **91** | **100** | **100** | **100** | 1.1 s | 50 ms | 0 |
+| About | **93** | **100** | **100** | **100** | 1.1 s | 40 ms | 0 |
+| Services | **92** | **100** | **100** | **100** | 1.1 s | 20 ms | 0 |
+| Projects | **91** | **100** | **100** | **100** | 1.1 s | 20 ms | 0 |
+| Project detail | **92** | **100** | **100** | **100** | 0.9 s | 10 ms | 0 |
+| Contact | **90** | **100** | **100** | **100** | 1.2 s | 10 ms | 0 |
 
 > **Note on the LCP figure.** Lighthouse's Lantern simulator reports a
-> simulated LCP of 3.0 – 3.8 s and, on the home page, reports no LCP at all.
-> This is a simulator artefact, not the real behaviour: reading the Chrome
-> DevTools Protocol trace directly shows the hero photograph being painted as
-> the Largest Contentful Paint **9 – 70 ms after the first paint** on every
-> page (`node scripts/measure-lcp-trace.mjs`). The same numbers appear under
-> real throttling (Slow 4G + 4× CPU, `node scripts/measure-vitals.mjs`):
-> FCP 0.8 – 1.0 s, CLS 0.000, TBT 10 – 30 ms, LCP reported within 70 ms of
-> first paint. Lighthouse's own `largest-contentful-paint-element` audit
-> throws in this headless Chrome build, which is why the element is never
-> identified there. Full detail in `docs/TESTING.md` §5.
+> simulated LCP of 3.2 – 3.5 s. Reading the Chrome DevTools Protocol trace
+> directly shows the hero photograph being painted as the Largest Contentful
+> Paint **9 – 102 ms after the first paint** on every page
+> (`node scripts/measure-lcp-trace.mjs`). Under real throttling (Slow 4G + 4×
+> CPU, `node scripts/measure-vitals.mjs`) the home page LCP is **1.07 s** and
+> FCP is 0.9 s. Full detail in `docs/TESTING.md` §5.
 
 ### Core Web Vitals budget (mobile, Slow 4G + 4× CPU)
 
 | Metric | Target | Measured |
 | --- | --- | --- |
-| First Contentful Paint | < 1.8 s | 0.8 – 1.1 s |
-| Largest Contentful Paint | < 2.5 s | 9 – 70 ms after first paint (Chrome trace) |
-| Total Blocking Time | < 200 ms | 10 – 30 ms |
-| Cumulative Layout Shift | < 0.1 | 0.000 |
+| First Contentful Paint | < 1.8 s | 0.8 – 1.0 s |
+| Largest Contentful Paint | < 2.5 s | 0.8 – 2.4 s (1.07 s on the home page) |
+| Total Blocking Time | < 200 ms | 10 – 50 ms |
+| Cumulative Layout Shift | < 0.1 | 0.000 – 0.023 |
 | Initial JS (shared) | — | 103 kB |
-| Page transfer | — | 350 – 460 kB including all media |
+| Page transfer | — | 350 – 545 kB including all media |
 
 The hero photograph is the largest request at 70 kB on mobile, well inside the
 200 – 350 kB target from the brief. Nothing below the fold is requested before
