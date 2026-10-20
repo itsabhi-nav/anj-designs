@@ -17,7 +17,20 @@ export const site = {
   scopeLine: "We provides a full range of interior design, architectural design.",
   description:
     "ANJ Designs by Decor Inn — interior design, architectural design, bespoke furniture design and manufacturing, and turnkey interior projects from New Delhi.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://anjdesigns.in",
+  /**
+   * The canonical origin. It is used for the sitemap, the robots file and —
+   * importantly — for the absolute Open Graph image URL, which social
+   * platforms require. If the site is served from a different domain, set
+   * NEXT_PUBLIC_SITE_URL so the share preview still resolves.
+   */
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.anjdesigns.codewizard.online",
+  /** The 1200 × 630 share card. Social platforms crop anything else away. */
+  ogImage: {
+    path: "/assets/social/anj-og.jpg",
+    width: 1200,
+    height: 630,
+    alt: "ANJ Designs by Decor Inn — interior design, bespoke furniture and turnkey projects",
+  },
   locale: "en_IN",
   founded: "2010",
   city: "New Delhi",

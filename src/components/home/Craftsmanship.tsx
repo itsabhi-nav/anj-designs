@@ -1,7 +1,6 @@
 import { craftRanges, finishes, manufacturing, styles } from "@/data/services";
 import Media from "@/components/ui/Media";
 import Reveal from "@/components/motion/Reveal";
-import DeferredVideo from "@/components/ui/DeferredVideo";
 import { PinnedStory } from "@/components/motion/ScrollChoreography";
 import { SheetGrid, SheetMarker } from "@/components/ui/Sheet";
 import CraftRangeList from "./CraftRangeList";
@@ -175,28 +174,34 @@ export default function Craftsmanship() {
           </div>
         </div>
 
-        {/* Film */}
+        {/* The workshop */}
         <Reveal delay={120} className="mt-20">
           <div className="relative overflow-hidden bg-forest">
-            <DeferredVideo
-              poster="/assets/posters/film-craft-16x9.webp"
-              posterAlt="Bespoke furniture made in the Decor Inn workshop"
-              desktopSrc="/assets/videos/film-craft-desktop.mp4"
-              mobileSrc="/assets/videos/film-craft-mobile.mp4"
-              width={1600}
-              height={900}
-              className="aspect-[16/9] w-full"
-              label="Play the film"
-            />
-            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(11,28,22,.75)_0%,transparent_55%)]" />
+            <div className="relative aspect-[16/9] overflow-hidden">
+              <Media
+                src="/assets/craft/workshop/workshop-decorinn-01.webp"
+                alt="A Decor Inn craftsman shaping a furniture component in the Panchkula production unit"
+                width={1600}
+                height={951}
+                sizes="100vw"
+                className="h-full w-full object-cover object-center"
+              />
+            </div>
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(11,28,22,.85)_0%,rgba(11,28,22,.35)_52%,rgba(11,28,22,.08)_100%)]" />
             <div className="pointer-events-none absolute inset-y-0 left-0 flex max-w-md flex-col justify-center p-8 sm:p-12">
-              <p className="text-[0.62rem] uppercase tracking-[0.24em] text-champagne">
-                In the workshop
-              </p>
+              <p className="meta text-champagne">In the workshop</p>
               <p className="mt-3 font-display text-2xl leading-snug text-ivory-soft sm:text-3xl">
                 Machine manufacturing, expertly handcrafted finishes.
               </p>
+              <p className="mt-4 max-w-sm text-sm leading-relaxed text-ivory/60">
+                Every piece is cut, joined and finished by hand at our own
+                production unit in Panchkula, Haryana.
+              </p>
             </div>
+            <span
+              aria-hidden="true"
+              className="frame-ticks absolute inset-5 opacity-60"
+            />
           </div>
         </Reveal>
       </div>

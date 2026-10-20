@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { site } from "@/data/site";
 
-const OG_IMAGE = "/assets/brand/anj-header-master.jpg";
+const OG_IMAGE = site.ogImage.path;
 
 export function pageMetadata({
   title,
@@ -19,9 +19,9 @@ export function pageMetadata({
   const url = `${site.url}${path === "/" ? "" : path}`;
   const ogImages = (images?.length ? images : [OG_IMAGE]).map((image) => ({
     url: image.startsWith("http") ? image : `${site.url}${image}`,
-    width: 1530,
-    height: 180,
-    alt: site.fullName,
+    width: site.ogImage.width,
+    height: site.ogImage.height,
+    alt: site.ogImage.alt,
   }));
 
   return {
@@ -56,8 +56,8 @@ export function organisationJsonLd() {
     description: site.description,
     url: site.url,
     image: `${site.url}${OG_IMAGE}`,
-    logo: `${site.url}/assets/brand/anj-favicon.png`,
     telephone: ["+919231100003", "+919958961111"],
+    logo: `${site.url}/assets/brand/anj-favicon.png`,
     email: contact_emails(),
     address: {
       "@type": "PostalAddress",

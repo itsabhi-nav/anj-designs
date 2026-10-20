@@ -24,16 +24,13 @@ export default function ContactPage() {
         eyebrow="Contact us"
         title="Let's create something meaningful."
         intro="Tell us about your space, your ideas, and what you would like to create."
-        image="/assets/craft/dining/dining-portfolio-02.webp"
-        imageAlt="An interior by ANJ Designs by Decor Inn"
-        imageWidth={960}
-        imageHeight={1280}
-        film={{
-          poster: "/assets/posters/film-craft-16x9.webp",
-          posterPortrait: "/assets/posters/film-craft-9x16.webp",
-          desktopSrc: "/assets/videos/film-craft-desktop.mp4",
-          mobileSrc: "/assets/videos/film-craft-mobile.mp4",
-        }}
+        image="/assets/craft/economic-range/economic-range-decor-01.webp"
+        imageAlt="A quiet corner of a Decor Inn interior, with a woven pendant lamp and an ochre armchair"
+        imageWidth={1280}
+        imageHeight={1439}
+        portraitSrc="/assets/hero-crops/ochre.webp"
+        portraitWidth={1079}
+        portraitHeight={1439}
         stat={{ value: "48h", label: "Typical response time" }}      />
 
       {/* Details + form */}

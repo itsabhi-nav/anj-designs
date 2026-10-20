@@ -68,9 +68,6 @@ export default async function ProjectPage({
               height={project.hero.height}
               sizes="100vw"
               priority
-              portraitSrc={`/assets/hero-crops/${project.slug}.webp`}
-              portraitWidth={Math.round((project.hero.height * 3) / 4)}
-              portraitHeight={project.hero.height}
               className="h-full w-full object-cover object-center"
             />
           </div>

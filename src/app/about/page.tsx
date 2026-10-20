@@ -69,16 +69,13 @@ export default function AboutPage() {
         eyebrow="About ANJ Designs"
         title="Design with depth. Create with purpose."
         intro="A founder-led studio in New Delhi, making interiors and bespoke furniture for people who intend to live in them for a long time."
-        image="/assets/craft/entrance-foyers/entrance-foyer-decorinn-01.webp"
-        imageAlt="A grand residential entrance interior designed by ANJ Designs by Decor Inn"
-        imageWidth={1272}
-        imageHeight={936}
-        film={{
-          poster: "/assets/posters/film-craft-16x9.webp",
-          posterPortrait: "/assets/posters/film-craft-9x16.webp",
-          desktopSrc: "/assets/videos/film-craft-desktop.mp4",
-          mobileSrc: "/assets/videos/film-craft-mobile.mp4",
-        }}
+        image="/assets/craft/workshop/workshop-decorinn-01.webp"
+        imageAlt="A Decor Inn craftsman shaping a furniture component in the production unit"
+        imageWidth={1600}
+        imageHeight={951}
+        portraitSrc="/assets/hero-crops/workshop.webp"
+        portraitWidth={713}
+        portraitHeight={951}
         stat={{ value: "22,500", label: "Sq ft production unit, Panchkula" }}
       />
 

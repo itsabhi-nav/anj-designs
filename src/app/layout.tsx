@@ -6,6 +6,7 @@ import { site } from "@/data/site";
 import { organisationJsonLd } from "@/lib/seo";
 import SiteHeader from "@/components/layout/SiteHeader";
 import SiteFooter from "@/components/layout/SiteFooter";
+import FloatingActions from "@/components/layout/FloatingActions";
 import ScrollProgress from "@/components/motion/ScrollProgress";
 import Cursor from "@/components/motion/Cursor";
 
@@ -75,10 +76,11 @@ export const metadata: Metadata = {
     description: site.description,
     images: [
       {
-        url: "/assets/brand/anj-header-master.jpg",
-        width: 1530,
-        height: 180,
-        alt: site.fullName,
+        url: site.ogImage.path,
+        width: site.ogImage.width,
+        height: site.ogImage.height,
+        alt: site.ogImage.alt,
+        type: "image/jpeg",
       },
     ],
   },
@@ -86,7 +88,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${site.name} — ${site.tagline}`,
     description: site.description,
-    images: ["/assets/brand/anj-header-master.jpg"],
+    images: [site.ogImage.path],
   },
   robots: {
     index: true,
@@ -126,6 +128,7 @@ export default function RootLayout({
         <main id="main">{children}</main>
         <SiteFooter />
         <ScrollProgress />
+        <FloatingActions />
         <Cursor />
       </body>
     </html>

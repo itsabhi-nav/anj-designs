@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { variantSrcSet, variantUrl } from "@/lib/image-loader";
+import { variantSrcSet } from "@/lib/image-loader";
 import { cn } from "@/lib/utils";
 
 export interface MediaProps {
@@ -17,14 +17,12 @@ export interface MediaProps {
   unoptimized?: boolean;
   /**
    * Art-directed 3:4 crop used on small screens. The crop is taken from the
-   * SAME original photograph, so the mobile hero matches the portrait frame
-   * exactly — no heavy upscale, and roughly a third of the bytes.
+   * same original photograph, so the mobile hero matches the portrait frame
+   * exactly — no heavy upscale, and one file instead of two.
    */
   portraitSrc?: string;
   portraitWidth?: number;
   portraitHeight?: number;
-  /** Viewport width (px) below which the portrait crop is used. */
-  portraitBreakpoint?: number;
 }
 
 /**
@@ -50,75 +48,63 @@ export default function Media({
   portraitSrc,
   portraitWidth,
   portraitHeight,
-  portraitBreakpoint = 768,
 }: MediaProps) {
-  if (portraitSrc) {
-    // The two preloads below match the two <picture> candidates exactly, so
-    // the browser never downloads a file it is not going to use.
-    //
-    // Next's own preload is suppressed (`priority={false}`) because it points
-    // at the landscape srcset, which a phone never uses. Instead the image is
-    // marked eager + high priority, and the correct candidate is preloaded by
-    // the two media-scoped links above.
-    return (
-      <>
-        {priority && (
-          <>
-            <link
-              rel="preload"
-              as="image"
-              href={portraitSrc}
-              media={`(max-width: ${portraitBreakpoint - 1}px)`}
-            />
-            <link
-              rel="preload"
-              as="image"
-              href={variantUrl(src, 1600)}
-              imageSrcSet={variantSrcSet(src)}
-              imageSizes="100vw"
-              media={`(min-width: ${portraitBreakpoint}px)`}
-            />
-          </>
-        )}
-        <picture className="contents">
+  const hasPortrait = Boolean(portraitSrc);
+  const portrait = portraitSrc as string;
+
+  return (
+    <>
+      {/*
+        When an art-directed crop is used, Next's own preload would point at
+        the landscape candidate — the wrong file on a phone. These two
+        media-scoped preloads match the two <picture> candidates exactly, so
+        the browser downloads one file and never the other.
+      */}
+      {priority && hasPortrait && (
+        <>
+          <link
+            rel="preload"
+            as="image"
+            href={src}
+            imageSrcSet={variantSrcSet(src)}
+            imageSizes={sizes}
+            media="(min-width: 768px)"
+          />
+          <link
+            rel="preload"
+            as="image"
+            href={portrait}
+            imageSrcSet={variantSrcSet(portrait)}
+            imageSizes={sizes}
+            media="(max-width: 767px)"
+          />
+        </>
+      )}
+
+      <picture className="contents">
+        {hasPortrait && (
           <source
-            media={`(max-width: ${portraitBreakpoint - 1}px)`}
-            srcSet={portraitSrc}
+            media="(max-width: 767px)"
+            srcSet={variantSrcSet(portrait)}
+            sizes={sizes}
             width={portraitWidth}
             height={portraitHeight}
           />
-          <Image
-            src={src}
-            alt={alt}
-            width={width}
-            height={height}
-            sizes={sizes}
-            priority={false}
-            loading={priority ? "eager" : "lazy"}
-            fetchPriority={priority ? "high" : "low"}
-            unoptimized={unoptimized}
-            style={position ? { objectPosition: position } : undefined}
-            className={cn(imageClassName, className)}
-          />
-        </picture>
-      </>
-    );
-  }
-
-  return (
-    <Image
-      src={src}
-      alt={alt}
-      width={width}
-      height={height}
-      sizes={sizes}
-      priority={priority}
-      // Anything that is not the LCP candidate is fetched at low priority so
-      // it never competes with the hero.
-      fetchPriority={priority ? "high" : "low"}
-      unoptimized={unoptimized}
-      style={position ? { objectPosition: position } : undefined}
-      className={cn(imageClassName, className)}
-    />
+        )}
+        <Image
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          sizes={sizes}
+          priority={priority && !hasPortrait}
+          loading={hasPortrait && priority ? "eager" : undefined}
+          fetchPriority={priority ? "high" : "low"}
+          unoptimized={unoptimized}
+          style={position ? { objectPosition: position } : undefined}
+          className={cn(imageClassName, className)}
+        />
+      </picture>
+    </>
   );
 }

@@ -26,16 +26,13 @@ export default function ServicesPage() {
         eyebrow="Our services"
         title="Spaces that reflect how you actually live."
         intro="At ANJ Design, we create spaces that reflect your lifestyle and personality. From cozy homes to dynamic workspaces, our team designs interiors that are stylish, practical, and easy to live in."
-        image="/assets/craft/dining-range/dining-decorinn-01.webp"
-        imageAlt="A dining interior designed by ANJ Designs by Decor Inn"
-        imageWidth={1600}
-        imageHeight={1177}
-        film={{
-          poster: "/assets/posters/film-interiors-16x9.webp",
-          posterPortrait: "/assets/posters/film-interiors-9x16.webp",
-          desktopSrc: "/assets/videos/film-interiors-desktop.mp4",
-          mobileSrc: "/assets/videos/film-interiors-mobile.mp4",
-        }}
+        image="/assets/craft/entrance-foyers/entrance-foyer-decorinn-01.webp"
+        imageAlt="A grand residential staircase with crystal chandeliers, designed by ANJ Designs by Decor Inn"
+        imageWidth={1272}
+        imageHeight={936}
+        portraitSrc="/assets/hero-crops/staircase.webp"
+        portraitWidth={702}
+        portraitHeight={936}
         stat={{ value: "50+", label: "Polishes and finishes" }}
       />
 

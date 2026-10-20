@@ -27,16 +27,13 @@ export default function ProjectsPage() {
         eyebrow="Our projects"
         title="A portfolio worth the work it presents."
         intro="Thirteen projects across residential, commercial and international work — photographed as completed, with nothing added that was not built."
-        image="/assets/projects/villa-golf-course-extension/01.webp"
-        imageAlt="Interior of the Villa at Golf Course Extension Road, Gurugram"
-        imageWidth={344}
-        imageHeight={344}
-        film={{
-          poster: "/assets/posters/film-interiors-16x9.webp",
-          posterPortrait: "/assets/posters/film-interiors-9x16.webp",
-          desktopSrc: "/assets/videos/film-interiors-desktop.mp4",
-          mobileSrc: "/assets/videos/film-interiors-mobile.mp4",
-        }}
+        image="/assets/craft/dining/dining-portfolio-01.webp"
+        imageAlt="A formal dining room with an art-deco table and a linear gold chandelier, by Decor Inn"
+        imageWidth={1286}
+        imageHeight={965}
+        portraitSrc="/assets/hero-crops/dining.webp"
+        portraitWidth={724}
+        portraitHeight={965}
         stat={{ value: "13", label: "Commissioned projects" }}
       />
 

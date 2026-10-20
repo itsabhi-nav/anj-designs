@@ -35,13 +35,11 @@ Three typefaces, three jobs:
 | Manrope | Body — running copy, navigation, buttons |
 | JetBrains Mono | Technical metadata — sheet numbers, coordinates, counters |
 
-**A background film** plays behind every hero. It is not the dated 3D
-walkthrough from the original site — it is cut from the studio's own
-completed interiors as a slow drift across the staircase, the salon, the
-dining room and the workshop, in two masters (16:9 and 9:16 for phones) and
-under 290 kB. The poster frame is the Largest Contentful Paint; the film is
-not even requested until the poster has landed, and never at all under
-reduced motion or on a metered connection.
+**The heroes are photographs**, taken from the studio's own completed
+interiors — the teal salon, the grand staircase, the craftsman at the lathe,
+the ochre armchair under the woven pendant. Each is also cut to a 3:4 portrait
+frame for phones from the same original file, so a tall viewport never
+upscales a landscape frame.
 
 Full detail in `docs/HANDOVER.md` §2.
 
@@ -141,7 +139,8 @@ any referenced asset is missing on disk.
 | `npm run assets:curate` | Categorises the extracted photography using the PDFs' own range headings |
 | `npm run assets:manifest` | Regenerates `src/data/assets.ts` and validates every reference |
 | `npm run assets:variants` | Generates the responsive image variants and the loader manifest |
-| `npm run assets:films` | Cuts the two hero background films from the studio's own photography |
+| `npm run assets:hero-crops` | Cuts the 3:4 mobile hero crops from the original photographs |
+| `npm run assets:social` | Builds the 1200 × 630 social share card |
 | `npm run assets:hero-crops` | Generates art-directed 3:4 mobile crops of the hero images |
 | `node scripts/visual-qa.mjs` | Screenshots every page at 8 widths and reports overflow, broken images, dead links and console errors |
 | `node scripts/lighthouse-audit.mjs` | Lighthouse across all six page types |

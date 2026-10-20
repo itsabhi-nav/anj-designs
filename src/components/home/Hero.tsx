@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
 import { site } from "@/data/site";
-import BackgroundVideo from "@/components/ui/BackgroundVideo";
+import Media from "@/components/ui/Media";
 import Magnetic from "@/components/motion/Magnetic";
 
 /**
@@ -23,15 +23,24 @@ export default function Hero() {
       className="relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden bg-forest"
       aria-labelledby="hero-title"
     >
-      {/* Background film — the poster is the LCP; the film arrives after idle. */}
+      {/*
+        The hero is a full-bleed photograph from the studio's own work, at
+        full resolution. An art-directed 3:4 crop of the SAME original is
+        used on phones, so a tall viewport never has to upscale a landscape
+        frame.
+      */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <BackgroundVideo
-          poster="/assets/posters/film-interiors-16x9.webp"
-          posterPortrait="/assets/posters/film-interiors-9x16.webp"
-          posterAlt="A grand residential staircase with a chandelier and a marble floor"
-          desktopSrc="/assets/videos/film-interiors-desktop.mp4"
-          mobileSrc="/assets/videos/film-interiors-mobile.mp4"
+        <Media
+          src="/assets/craft/dining-range/dining-decorinn-01.webp"
+          alt="A formal dining room with a marble fireplace and crystal pendants, designed by ANJ Designs by Decor Inn"
+          width={1600}
+          height={1177}
           sizes="100vw"
+          priority
+          portraitSrc="/assets/hero-crops/salon.webp"
+          portraitWidth={883}
+          portraitHeight={1177}
+          className="h-full w-full object-cover object-center"
         />
       </div>
 

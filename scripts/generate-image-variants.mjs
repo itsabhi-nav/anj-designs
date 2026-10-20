@@ -33,14 +33,10 @@ const QUALITY = 80;
 async function walk(dir, base = "") {
   const out = [];
   for (const entry of await readdir(dir, { withFileTypes: true })) {
-    // `variants` is the output, `pdf` and `videos` are not images, and
-    // `hero-crops` are pre-generated art-directed crops served directly.
-    if (
-      entry.name === "variants" ||
-      entry.name === "pdf" ||
-      entry.name === "videos" ||
-      entry.name === "hero-crops"
-    ) {
+    // `variants` is the output, `pdf` and `videos` are not images. The
+    // art-directed hero crops ARE images and go through the pipeline so they
+    // get honest responsive srcsets and a matching preload.
+    if (entry.name === "variants" || entry.name === "pdf" || entry.name === "videos") {
       continue;
     }
     const rel = base ? `${base}/${entry.name}` : entry.name;
