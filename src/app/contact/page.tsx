@@ -29,9 +29,10 @@ export default function ContactPage() {
         imageWidth={960}
         imageHeight={1280}
         film={{
-          poster: "/assets/videos/bg-poster-home-office.webp",
-          desktopSrc: "/assets/videos/bg-home-office-desktop.mp4",
-          mobileSrc: "/assets/videos/bg-home-office-mobile.mp4",
+          poster: "/assets/posters/film-craft-16x9.webp",
+          posterPortrait: "/assets/posters/film-craft-9x16.webp",
+          desktopSrc: "/assets/videos/film-craft-desktop.mp4",
+          mobileSrc: "/assets/videos/film-craft-mobile.mp4",
         }}
         stat={{ value: "48h", label: "Typical response time" }}      />
 

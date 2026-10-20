@@ -179,14 +179,14 @@ export default function Craftsmanship() {
         <Reveal delay={120} className="mt-20">
           <div className="relative overflow-hidden bg-forest">
             <DeferredVideo
-              poster="/assets/videos/poster-modern-furniture.webp"
-              posterAlt="Bespoke furniture in production at the Decor Inn unit"
-              desktopSrc="/assets/videos/modern-furniture-desktop.mp4"
-              mobileSrc="/assets/videos/modern-furniture-mobile.mp4"
+              poster="/assets/posters/film-craft-16x9.webp"
+              posterAlt="Bespoke furniture made in the Decor Inn workshop"
+              desktopSrc="/assets/videos/film-craft-desktop.mp4"
+              mobileSrc="/assets/videos/film-craft-mobile.mp4"
               width={1600}
               height={900}
               className="aspect-[16/9] w-full"
-              label="Play the furniture film"
+              label="Play the film"
             />
             <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(11,28,22,.75)_0%,transparent_55%)]" />
             <div className="pointer-events-none absolute inset-y-0 left-0 flex max-w-md flex-col justify-center p-8 sm:p-12">

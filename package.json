@@ -14,6 +14,7 @@
     "assets:curate": ".venv-pdf/bin/python scripts/curate-craft-library.py",
     "assets:normalize": ".venv-pdf/bin/python scripts/normalize-craft-library.py",
     "assets:videos": ".venv-pdf/bin/python scripts/optimise-videos.py",
+    "assets:films": ".venv-pdf/bin/python scripts/build-films.py",
     "assets:manifest": "node scripts/generate-asset-manifest.mjs",
     "assets:variants": "node scripts/generate-image-variants.mjs",
     "assets:hero-crops": "node scripts/generate-hero-crops.mjs",

@@ -35,11 +35,13 @@ Three typefaces, three jobs:
 | Manrope | Body — running copy, navigation, buttons |
 | JetBrains Mono | Technical metadata — sheet numbers, coordinates, counters |
 
-**A background film** plays behind every hero, cut from the studio's own
-footage: one calm segment, played at 45% speed, 960 px, under 200 kB. The
-poster frame is the Largest Contentful Paint; the film is only requested once
-the browser is idle, and never at all under reduced motion or on a metered
-connection.
+**A background film** plays behind every hero. It is not the dated 3D
+walkthrough from the original site — it is cut from the studio's own
+completed interiors as a slow drift across the staircase, the salon, the
+dining room and the workshop, in two masters (16:9 and 9:16 for phones) and
+under 290 kB. The poster frame is the Largest Contentful Paint; the film is
+not even requested until the poster has landed, and never at all under
+reduced motion or on a metered connection.
 
 Full detail in `docs/HANDOVER.md` §2.
 
@@ -139,6 +141,7 @@ any referenced asset is missing on disk.
 | `npm run assets:curate` | Categorises the extracted photography using the PDFs' own range headings |
 | `npm run assets:manifest` | Regenerates `src/data/assets.ts` and validates every reference |
 | `npm run assets:variants` | Generates the responsive image variants and the loader manifest |
+| `npm run assets:films` | Cuts the two hero background films from the studio's own photography |
 | `npm run assets:hero-crops` | Generates art-directed 3:4 mobile crops of the hero images |
 | `node scripts/visual-qa.mjs` | Screenshots every page at 8 widths and reports overflow, broken images, dead links and console errors |
 | `node scripts/lighthouse-audit.mjs` | Lighthouse across all six page types |

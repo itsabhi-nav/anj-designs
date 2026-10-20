@@ -31,9 +31,10 @@ export default function ServicesPage() {
         imageWidth={1600}
         imageHeight={1177}
         film={{
-          poster: "/assets/videos/bg-poster-modern-furniture.webp",
-          desktopSrc: "/assets/videos/bg-modern-furniture-desktop.mp4",
-          mobileSrc: "/assets/videos/bg-modern-furniture-mobile.mp4",
+          poster: "/assets/posters/film-interiors-16x9.webp",
+          posterPortrait: "/assets/posters/film-interiors-9x16.webp",
+          desktopSrc: "/assets/videos/film-interiors-desktop.mp4",
+          mobileSrc: "/assets/videos/film-interiors-mobile.mp4",
         }}
         stat={{ value: "50+", label: "Polishes and finishes" }}
       />

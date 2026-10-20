@@ -29,6 +29,7 @@ export default function PageHero({
   /** The background film for this page, if it has one. */
   film?: {
     poster: string;
+    posterPortrait?: string;
     desktopSrc: string;
     mobileSrc: string;
   };
@@ -43,6 +44,7 @@ export default function PageHero({
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <BackgroundVideo
             poster={film.poster}
+            posterPortrait={film.posterPortrait}
             posterAlt={imageAlt}
             desktopSrc={film.desktopSrc}
             mobileSrc={film.mobileSrc}

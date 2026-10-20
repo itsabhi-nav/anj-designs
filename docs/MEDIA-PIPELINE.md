@@ -112,65 +112,76 @@ Cloudinary is **not** required. The default path needs no third-party account.
 
 ## 4. Video
 
-The three original videos are 5.6 MB, 18.5 MB and 4.1 MB as published. Two
-delivery paths are built from them.
+The three films published on the live site are 5.6 MB, 18.5 MB and 4.1 MB. They
+are **preserved untouched** in `public/assets/videos/originals/`, but they are
+not what plays behind the heroes.
 
-### 4.1 The background films — the hero
+### 4.1 Why the original footage is not used
 
-The original site plays a background film behind the hero on every page, and
-that is what the new site does too. The films are the studio's own footage, cut
-down for the web:
+The original hero footage is a 3D walkthrough of an apartment. It reads as
+dated, it is a render rather than the studio's own completed work, and once
+scaled for the web it is soft. It is kept for the record, not for the site.
 
-| Output | Purpose | Size |
-| --- | --- | --- |
-| `bg-<name>-desktop.mp4` | 960 px, 22 fps, CRF 38, no audio | 71 – 194 kB |
-| `bg-<name>-mobile.mp4` | 560 px, same settings | 30 – 79 kB |
-| `bg-poster-<name>.webp` | A still from the middle of the film — the LCP | 34 – 70 kB |
-| `<name>-desktop.mp4` | 1280 px, CRF 30 — for the opt-in film in the craftsmanship section | 0.4 – 1.1 MB |
-| `originals/<name>.mp4` | The untouched master | 5.6 – 18.5 MB |
+### 4.2 The hero films — cut from the studio's own work
 
-Each background film is one calm segment of the original — for the apartment
-film, the slow dusk pan across the city view — played at 45% speed so the
-camera drifts rather than walks. It is blurred very slightly and encoded hard,
-because it sits under a dark green treatment where fine detail is invisible. A
-large file there would be paid for and never seen.
+`scripts/build-films.py` cuts two films from the high-resolution photography
+extracted from the official Décor Inn portfolio PDFs. Nothing is generated or
+invented: every frame is a photograph the studio has published, chosen by eye
+for how well it holds a full-bleed frame.
 
-| Page | Film |
+| Film | Shots |
 | --- | --- |
-| Home | `luxury-apartment` — the original site's own hero film |
-| About | `home-office` — the studio |
-| Services | `modern-furniture` — the craft |
-| Projects | `luxury-apartment` |
-| Contact | `home-office` |
-| Project detail | *no film* — the hero shows that project's own photograph |
+| `interiors` | the grand staircase, the ochre chair under the woven pendant, the teal salon with the marble fireplace, the dark-wood dining room under the linear chandelier |
+| `craft` | the craftsman at the lathe, the navy living room, the tailored white salon, the cream bedroom with the scalloped headboard |
 
-### 4.2 How the background film is loaded
+Each shot is a slow, eased drift. The camera is a **crop window travelling
+across a pre-scaled image** — never a per-frame resample. That detail matters:
+re-scaling on every frame changes every pixel slightly, which defeats
+inter-frame compression and can quadruple the file. The shots are joined with
+0.7 s cross-dissolves, and the tail drifts back into the head so the loop is
+seamless.
 
-`src/components/ui/BackgroundVideo.tsx` enforces five rules:
+Two masters are rendered for each film — 16:9 for desktop and 9:16 for
+phones, because a 16:9 film cropped into a tall phone viewport loses most of
+the frame.
+
+| Output | Desktop | Mobile |
+| --- | --- | --- |
+| Film | 1152 × 648, CRF 37, no audio | 608 × 1080, CRF 38, no audio |
+| Size | 216 – 289 kB | 183 – 243 kB |
+| Poster | 1600 × 900 WebP, responsive variants | 640 × 1136 WebP, responsive variants |
+| Poster size | 42 – 106 kB | 25 – 66 kB |
+
+The posters go through the same build-time variant pipeline as every other
+image, so the browser picks a sensible candidate for the viewport instead of
+downloading the full-resolution file.
+
+### 4.3 How the background film is loaded
+
+`src/components/ui/BackgroundVideo.tsx` enforces six rules:
 
 1. **The poster is the Largest Contentful Paint.** It is a priority image and
    it paints first, before a single video byte is requested.
-2. **The film is only requested after the page has loaded and the browser is
-   idle** (`requestIdleCallback`, with a 3.5 s ceiling). It never competes
-   with the first screen.
-3. **It is never loaded at all** for a visitor who prefers reduced motion, or
+2. **The film is not even requested until the poster has landed**, so the two
+   never compete for the connection.
+3. **The film is only requested after the page has loaded and the browser is
+   idle** (`requestIdleCallback`, with a 3.5 s ceiling).
+4. **It is never loaded at all** for a visitor who prefers reduced motion, or
    who is on a metered (`Save-Data`) or 2G connection. The poster simply
    stays.
-4. **It has no audio track at all**, so it can never make a sound.
-5. **The poster is never removed from the DOM**, so the LCP element never
+5. **It has no audio track at all**, so it can never make a sound.
+6. **The poster is never removed from the DOM**, so the LCP element never
    changes and no new LCP candidate is ever created.
 
 Measured: 0 video requests at the `load` event; the first request lands
-163 ms *after* load, once the browser is idle. Under `prefers-reduced-motion`
-and under `Save-Data`, 0 requests are made at all.
+shortly after the poster has painted and the browser has gone idle. Under
+`prefers-reduced-motion` and under `Save-Data`, 0 requests are made at all.
 
-### 4.3 The opt-in film
+### 4.4 The opt-in film
 
-The craftsmanship film is a different pattern: it never autoplays, it is only
+The craftsmanship film follows the same pattern: it never autoplays, it is only
 mounted when its section comes within 300 px of the viewport, and it has a
 play button.
-
----
 
 ## 5. Caching
 

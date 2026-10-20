@@ -26,10 +26,11 @@ export default function Hero() {
       {/* Background film — the poster is the LCP; the film arrives after idle. */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <BackgroundVideo
-          poster="/assets/videos/bg-poster-luxury-apartment.webp"
-          posterAlt="A luxury apartment interior at dusk with a full-height city view"
-          desktopSrc="/assets/videos/bg-luxury-apartment-desktop.mp4"
-          mobileSrc="/assets/videos/bg-luxury-apartment-mobile.mp4"
+          poster="/assets/posters/film-interiors-16x9.webp"
+          posterPortrait="/assets/posters/film-interiors-9x16.webp"
+          posterAlt="A grand residential staircase with a chandelier and a marble floor"
+          desktopSrc="/assets/videos/film-interiors-desktop.mp4"
+          mobileSrc="/assets/videos/film-interiors-mobile.mp4"
           sizes="100vw"
         />
       </div>

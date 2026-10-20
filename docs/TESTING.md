@@ -68,12 +68,12 @@ Production build, mobile emulation (Moto G Power, Slow 4G, 4× CPU throttle).
 
 | Page | Perf | A11y | Best practices | SEO | FCP | TBT | CLS | Transfer |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Home | **90** | **100** | **100** | **100** | 1.1 s | 30 ms | 0 | 802 kB |
-| About | **92** | **100** | **100** | **100** | 1.1 s | 60 ms | 0 | 611 kB |
-| Services | **89** | **100** | **100** | **100** | 1.1 s | 50 ms | 0 | 694 kB |
-| Projects | **91** | **100** | **100** | **100** | 1.1 s | 40 ms | 0 | 701 kB |
-| Project detail | **95** | **100** | **100** | **100** | 0.9 s | 30 ms | 0 | 594 kB |
-| Contact | **93** | **100** | **100** | **100** | 1.2 s | 40 ms | 0 | 539 kB |
+| Home | **87** | **100** | **100** | **100** | 1.1 s | 60 ms | 0 | 987 kB |
+| About | **93** | **100** | **100** | **100** | 1.1 s | 40 ms | 0 | 760 kB |
+| Services | **90** | **100** | **100** | **100** | 1.1 s | 180 ms | 0 | 904 kB |
+| Projects | **94** | **100** | **100** | **100** | 1.1 s | 30 ms | 0 | 886 kB |
+| Project detail | **94** | **100** | **100** | **100** | 0.9 s | 30 ms | 0 | 595 kB |
+| Contact | **93** | **100** | **100** | **100** | 1.1 s | 40 ms | 0 | 688 kB |
 
 Accessibility, Best Practices and SEO are **100 on every page**.
 
@@ -98,12 +98,12 @@ throttle**, mobile viewport 412 × 823 at DPR 1.75.
 
 | Page | TTFB | FCP | LCP | CLS | Transfer | Requests |
 | --- | --- | --- | --- | --- | --- | --- |
-| Home | 24 ms | 1008 ms | 1420 ms | 0 | 657 kB | 31 |
-| About | 8 ms | 892 ms | 1432 ms | 0 | 452 kB | 23 |
-| Services | 9 ms | 792 ms | 2364 ms | 0.012 | 554 kB | 26 |
-| Projects | 6 ms | 792 ms | 2060 ms | 0.003 | 567 kB | 28 |
-| Project detail | 8 ms | 772 ms | 860 ms | 0.023 | 464 kB | 27 |
-| Contact | 7 ms | 1120 ms | 1248 ms | 0 | 470 kB | 24 |
+| Home | 113 ms | 1196 ms | 1540 ms | 0 | 842 kB | 31 |
+| About | 17 ms | 788 ms | 1364 ms | 0.0001 | 601 kB | 23 |
+| Services | 18 ms | 780 ms | 2476 ms | 0.012 | 764 kB | 26 |
+| Projects | 9 ms | 788 ms | 2436 ms | 0.003 | 752 kB | 28 |
+| Project detail | 14 ms | 816 ms | 876 ms | 0.0234 | 464 kB | 27 |
+| Contact | 26 ms | 876 ms | 1384 ms | 0.0016 | 618 kB | 24 |
 
 Every metric is inside the brief's budget except the two pages at 2.2 – 2.4 s,
 which are marginally over the 2.5 s LCP target only because the whole page is
@@ -289,14 +289,29 @@ it is tested separately.
 | Check | Result |
 | --- | --- |
 | Video requests at the `load` event | **0** — the poster has already painted |
-| First video request | 163 ms **after** load, once the browser is idle |
-| Desktop variant | `bg-luxury-apartment-desktop.mp4`, 960 px, 194 kB, plays (readyState 4) |
-| Mobile variant | `bg-luxury-apartment-mobile.mp4`, 560 px, 79 kB, plays |
+| The film is requested only after the poster has landed | Verified: the request is gated on the poster's `load` event, so the two never compete for the connection |
+| Desktop variant | `film-interiors-desktop.mp4`, 1152 × 648, 289 kB, plays (readyState 4) |
+| Mobile variant | `film-interiors-mobile.mp4`, 608 × 1080, 243 kB, plays |
 | `prefers-reduced-motion: reduce` | **0 requests**, the video stays at opacity 0 and the poster carries the page |
 | `navigator.connection.saveData` | **0 requests** |
 | Audio | None — the encodes are stripped with `-an` |
-| LCP element | Still the poster image (observed LCP 6 – 97 ms after first paint) |
+| LCP element | Still the poster image (observed LCP 9 – 190 ms after first paint) |
 | CLS | 0 — the poster never leaves the DOM, so no LCP candidate is ever invalidated |
 
 The film is served from the same origin and is covered by the immutable cache
 header, so it is downloaded once per visitor for the whole site.
+
+### The films
+
+They are cut from the studio's own completed interiors by
+`scripts/build-films.py` — the grand staircase, the ochre chair under the
+woven pendant, the teal salon with the marble fireplace, the dark-wood dining
+room, the craftsman at the lathe, the tailored white salon and the cream
+bedroom. Nothing is generated or invented: every frame is a photograph the
+studio has published.
+
+Each shot is a slow drift produced by a crop window travelling across a
+pre-scaled image, never a per-frame resample — re-scaling on every frame
+changes every pixel slightly, defeats inter-frame compression and can
+quadruple the file size. The shots are joined with 0.7 s cross-dissolves and
+the tail drifts back into the head, so the loop is seamless.

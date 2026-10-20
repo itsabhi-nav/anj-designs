@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
+import { variantSrcSet } from "@/lib/image-loader";
 import { cn } from "@/lib/utils";
 
 /**
@@ -22,6 +23,7 @@ import { cn } from "@/lib/utils";
  */
 export default function BackgroundVideo({
   poster,
+  posterPortrait,
   posterAlt,
   desktopSrc,
   mobileSrc,
@@ -31,6 +33,8 @@ export default function BackgroundVideo({
   imageClassName,
 }: {
   poster: string;
+  /** The portrait poster, used on phones where the frame is tall. */
+  posterPortrait?: string;
   posterAlt: string;
   desktopSrc: string;
   mobileSrc: string;
@@ -42,6 +46,7 @@ export default function BackgroundVideo({
   const videoRef = useRef<HTMLVideoElement>(null);
   const [ready, setReady] = useState(false);
   const [visible, setVisible] = useState(false);
+  const [posterPainted, setPosterPainted] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -100,8 +105,17 @@ export default function BackgroundVideo({
       }
     };
 
-    if (document.readyState === "complete") schedule();
-    else window.addEventListener("load", schedule, { once: true });
+    const begin = () => {
+      // The poster is the Largest Contentful Paint. The film is not even
+      // requested until the poster has landed, so the two never compete for
+      // the connection.
+      if (cancelled) return;
+      if (!posterPainted) return;
+      if (document.readyState === "complete") schedule();
+      else window.addEventListener("load", schedule, { once: true });
+    };
+
+    begin();
 
     return () => {
       cancelled = true;
@@ -119,20 +133,56 @@ export default function BackgroundVideo({
         video.load();
       }
     };
-  }, [desktopSrc, mobileSrc]);
+  }, [desktopSrc, mobileSrc, posterPainted]);
 
   return (
     <div className={cn("absolute inset-0 overflow-hidden", className)}>
-      {/* The poster — this is the LCP and it never leaves the DOM. */}
-      <Image
-        src={poster}
-        alt={posterAlt}
-        fill
-        sizes={sizes}
-        priority={priority}
-        fetchPriority={priority ? "high" : "low"}
-        className={cn("object-cover", imageClassName)}
-      />
+      {/* ── The poster — this is the LCP and it never leaves the DOM. ──── */}
+      {priority && (
+        <>
+          <link
+            rel="preload"
+            as="image"
+            href={poster}
+            imageSrcSet={variantSrcSet(poster)}
+            imageSizes="100vw"
+            media="(min-width: 768px)"
+          />
+          {posterPortrait && (
+            <link
+              rel="preload"
+              as="image"
+              href={posterPortrait}
+              imageSrcSet={variantSrcSet(posterPortrait)}
+              imageSizes="100vw"
+              media="(max-width: 767px)"
+            />
+          )}
+        </>
+      )}
+
+      <picture className="contents">
+        {posterPortrait && (
+          <source
+            media="(max-width: 767px)"
+            srcSet={variantSrcSet(posterPortrait)}
+            sizes="100vw"
+            width={640}
+            height={1136}
+          />
+        )}
+        <Image
+          src={poster}
+          alt={posterAlt}
+          fill
+          sizes={sizes}
+          priority={false}
+          loading="eager"
+          fetchPriority={priority ? "high" : "low"}
+          onLoad={() => setPosterPainted(true)}
+          className={cn("object-cover", imageClassName)}
+        />
+      </picture>
 
       {/* The film — layered on top, faded in only once it can play. */}
       <video
@@ -149,11 +199,6 @@ export default function BackgroundVideo({
           ready && visible ? "opacity-100" : "opacity-0"
         )}
       />
-
-      {/* Keeps the poster from ever being the only thing painted. */}
-      <noscript>
-        <style>{`.absolute video{opacity:0 !important}`}</style>
-      </noscript>
     </div>
   );
 }

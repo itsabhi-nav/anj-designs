@@ -32,9 +32,10 @@ export default function ProjectsPage() {
         imageWidth={344}
         imageHeight={344}
         film={{
-          poster: "/assets/videos/bg-poster-luxury-apartment.webp",
-          desktopSrc: "/assets/videos/bg-luxury-apartment-desktop.mp4",
-          mobileSrc: "/assets/videos/bg-luxury-apartment-mobile.mp4",
+          poster: "/assets/posters/film-interiors-16x9.webp",
+          posterPortrait: "/assets/posters/film-interiors-9x16.webp",
+          desktopSrc: "/assets/videos/film-interiors-desktop.mp4",
+          mobileSrc: "/assets/videos/film-interiors-mobile.mp4",
         }}
         stat={{ value: "13", label: "Commissioned projects" }}
       />
