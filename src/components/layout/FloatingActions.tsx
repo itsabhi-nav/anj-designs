@@ -88,31 +88,47 @@ export default function FloatingActions() {
 }
 
 /**
- * The WhatsApp mark: the chat bubble drawn as an outline, with a handset
- * inside it. Built from primitives rather than a single opaque path so the
- * glyph is guaranteed to render correctly at every size.
+ * The WhatsApp mark.
+ *
+ * Built as a mask rather than a single opaque path: the bubble is a filled
+ * disc with a tapered tail, and the handset is knocked out of it. That gives
+ * the authentic single-colour WhatsApp mark, and it renders correctly at
+ * every size because no part depends on a hand-traced path.
  */
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 24 24"
-      fill="none"
       className={className}
       aria-hidden="true"
       focusable="false"
     >
-      {/* The bubble, with its tail */}
-      <path
-        d="M20.4 11.7a8.3 8.3 0 0 1-12.2 7.3L3.4 20.6l1.6-4.7a8.3 8.3 0 1 1 15.4-4.2Z"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      {/* The handset */}
-      <path
-        d="M9.1 7.4c.9 1.7 2.3 3.1 4 4l1.1-1.1c.3-.3.7-.4 1.1-.2.7.3 1.5.5 2.3.5.5 0 .8.4.8.8v1.4c0 .5-.3.8-.8.8-3.6 0-7-1.7-8.8-4.7-.3-.5-.5-1-.5-1.5 0-.4.3-.7.7-.7h1.5c.4 0 .8.3.8.7 0 .8.2 1.5.5 2.2.2.4.1.8-.2 1.1l-.5.4Z"
+      <defs>
+        <mask id="anj-wa-mark" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+          {/* The bubble */}
+          <circle cx="12" cy="10.1" r="9.5" fill="white" />
+          {/* The tail */}
+          <path
+            d="M4.6 15c-1 2.1-1.6 4.2-1.8 6.2 2.1-.3 4.3-1.1 6.1-2.2-1.5-1-2.6-2.4-3.3-3.9Z"
+            fill="white"
+          />
+          {/* The handset, knocked out of the bubble */}
+          <path
+            d="M9.5 8.3c.8 1.6 2 2.8 3.6 3.6l1.2-1.2c.3-.3.7-.4 1.1-.2.6.3 1.3.4 2 .4.4 0 .7.3.7.7v1.3c0 .4-.3.7-.7.7"
+            fill="none"
+            stroke="black"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            transform="translate(12 10.1) scale(0.86) translate(-13 -12.4)"
+          />
+        </mask>
+      </defs>
+      <rect
+        width="24"
+        height="24"
         fill="currentColor"
+        mask="url(#anj-wa-mark)"
       />
     </svg>
   );
